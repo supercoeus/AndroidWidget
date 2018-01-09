@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 数量加减控件 -->
+    <declare-styleable name="AmountView">
+        <attr name="av_btmWidth" format="dimension|reference"/>
+        <attr name="av_btmHeight" format="dimension|reference"/>
+        <attr name="av_middleWidth" format="dimension|reference"/>
+        <attr name="av_leftBackground" format="reference"/>
+        <attr name="av_middleBackground" format="reference"/>
+        <attr name="av_rightBackground" format="reference"/>
+        <attr name="av_textSize" format="dimension|reference"/>
+        <attr name="av_textColor" format="color|reference"/>
+        <attr name="av_isEditor" format="boolean|reference"/>
+        <attr name="av_min" format="integer|reference"/>
+        <attr name="av_max" format="integer|reference"/>
+        <attr name="av_stepSize" format="integer|reference"/>
+        <attr name="av_amount" format="integer|reference"/>
+    </declare-styleable>
+</resources>

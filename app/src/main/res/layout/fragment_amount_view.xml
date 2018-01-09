@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin"
+    tools:context="com.github.airsaid.androidwidget.MainActivity">
+
+    <com.github.airsaid.androidwidget.widget.AmountView
+        android:id="@+id/amountView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:av_amount="0"
+        app:av_btmHeight="40dp"
+        app:av_btmWidth="40dp"
+        app:av_isEditor="false"
+        app:av_leftBackground="@drawable/bg_left_amount"
+        app:av_max="500"
+        app:av_middleBackground="@drawable/bg_middle_amount"
+        app:av_middleWidth="60dp"
+        app:av_min="0"
+        app:av_rightBackground="@drawable/bg_right_amount"
+        app:av_stepSize="1"
+        app:av_textColor="#333333"
+        app:av_textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/txt_width"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:text="设置中间宽度：60dp"/>
+
+    <SeekBar
+        android:id="@+id/sb_width"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:max="100"
+        android:progress="60"/>
+
+    <TextView
+        android:id="@+id/txt_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:text="设置两侧大小：40dp"/>
+
+    <SeekBar
+        android:id="@+id/sb_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:max="100"
+        android:progress="40"/>
+
+    <TextView
+        android:id="@+id/txt_min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:text="设置最小数量：0"/>
+
+    <SeekBar
+        android:id="@+id/sb_min"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:max="100"/>
+
+    <TextView
+        android:id="@+id/txt_max"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:text="设置最大数量：500"/>
+
+    <SeekBar
+        android:id="@+id/sb_max"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:max="1000"
+        android:progress="500"/>
+
+    <TextView
+        android:id="@+id/txt_step_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:text="设置步长：1（每次加减多少）"/>
+
+    <SeekBar
+        android:id="@+id/sb_step_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:max="20"/>
+
+</LinearLayout>
