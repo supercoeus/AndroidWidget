@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.github.airsaid.androidwidget.adapter.ItemAdapter;
 import com.github.airsaid.androidwidget.data.Item;
 import com.github.airsaid.androidwidget.ui.AmountViewFragment;
+import com.github.airsaid.androidwidget.ui.SuperTextViewFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,7 @@ public class MainFragment extends Fragment{
         mItems = new ArrayList<>();
 
         mItems.add(new Item("AmountView（数量加减控件）", AmountViewFragment.class));
-
+        mItems.add(new Item("SuperTextView（增强版 TextView）", SuperTextViewFragment.class));
 
         mItemAdapter.setNewData(mItems);
         mItemAdapter.setOnItemClickCallback(new ItemAdapter.OnItemClickCallback() {

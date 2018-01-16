@@ -17,4 +17,9 @@
         <attr name="av_stepSize" format="integer|reference"/>
         <attr name="av_amount" format="integer|reference"/>
     </declare-styleable>
+
+    <!-- 增加版 TextView -->
+    <declare-styleable name="SuperTextView">
+        <attr name="stv_background" format="color|reference"/>
+    </declare-styleable>
 </resources>
