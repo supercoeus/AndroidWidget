@@ -11,6 +11,8 @@ import com.github.airsaid.androidwidget.R;
 
 /**
  * @author airsaid
+ *
+ * {@link com.github.airsaid.androidwidget.widget.SuperTextView} 演示.
  */
 public class SuperTextViewFragment extends Fragment {
 
