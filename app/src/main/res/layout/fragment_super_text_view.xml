@@ -1,27 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/activity_horizontal_margin"
     tools:context="com.github.airsaid.androidwidget.MainActivity">
 
-    <com.github.airsaid.androidwidget.widget.SuperTextView
-        android:id="@+id/superTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="20dp"
-        android:paddingBottom="6dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="6dp"
-        android:text="AndroidWidget\nSuperTextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:stv_background="@drawable/bg_text_super"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/margin">
 
-</android.support.constraint.ConstraintLayout>
+        <com.github.airsaid.androidwidget.widget.SuperTextView
+            android:id="@+id/superTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="20dp"
+            android:paddingBottom="6dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="6dp"
+            android:text="这是一个完整的 SuperTextView\n那么你看出来了它和普通的 TextView 有什么区别了吗？"
+            app:stv_background="@drawable/bg_text_super"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/margin"
+            android:background="@color/colorDivide"/>
+
+        <com.github.airsaid.androidwidget.widget.SuperTextView
+            android:id="@+id/superTextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin"
+            android:lineSpacingExtra="10dp"
+            android:text="演示 SuperTextView 的标签功能，支持文本和图片标签，可以设置在内容文本的开头或尾部，或者是中间的任意位置。"
+            android:textColor="@color/textBlack"
+            android:textSize="16sp"
+            app:stv_tagBackground="@drawable/bg_text_tag"
+            app:stv_tagGravity="start"
+            app:stv_tagMarginEnd="10dp"
+            app:stv_tagTextColor="@color/textWhite"
+            app:stv_tagTextSize="10sp"
+            app:stv_tags="@array/tags"/>
+
+        <TextView
+            android:id="@+id/txt_tag_gravity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="setTagGravity(SuperTextView.START)"/>
+
+        <RadioGroup
+            android:id="@+id/rg_tag_gravity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_tag_start"
+                android:layout_width="0dp"
+                android:checked="true"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="START"/>
+
+            <RadioButton
+                android:id="@+id/rb_tag_end"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="END"/>
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/txt_tag_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="setTagPosition(0)"/>
+
+        <SeekBar
+            android:id="@+id/sb_tag_position"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:max="50"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/margin"
+            android:background="@color/colorDivide"/>
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
+

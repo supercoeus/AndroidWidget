@@ -21,5 +21,16 @@
     <!-- 增加版 TextView -->
     <declare-styleable name="SuperTextView">
         <attr name="stv_background" format="color|reference"/>
+        <attr name="stv_tagBackground" format="color|reference"/>
+        <attr name="stv_tagTextSize" format="dimension|reference"/>
+        <attr name="stv_tagTextColor" format="color|reference"/>
+        <attr name="stv_tagMarginStart" format="dimension|reference"/>
+        <attr name="stv_tagMarginEnd" format="dimension|reference"/>
+        <attr name="stv_tagPosition" format="integer|reference"/>
+        <attr name="stv_tagGravity">
+            <enum name="start" value="1"/>
+            <enum name="end" value="2"/>
+        </attr>
+        <attr name="stv_tags" format="reference"/>
     </declare-styleable>
 </resources>

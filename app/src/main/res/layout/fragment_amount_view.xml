@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/activity_horizontal_margin"
+    android:padding="@dimen/margin"
     tools:context="com.github.airsaid.androidwidget.MainActivity">
 
     <com.github.airsaid.androidwidget.widget.AmountView
