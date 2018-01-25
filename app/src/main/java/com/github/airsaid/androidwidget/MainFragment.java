@@ -44,8 +44,8 @@ public class MainFragment extends Fragment{
         super.onViewCreated(view, savedInstanceState);
         mItems = new ArrayList<>();
 
-        mItems.add(new Item("AmountView（数量加减控件）", AmountViewFragment.class));
-        mItems.add(new Item("SuperTextView（增强版 TextView）", SuperTextViewFragment.class));
+        mItems.add(new Item("AmountView", "数量加减控件", AmountViewFragment.class));
+        mItems.add(new Item("SuperTextView", "增强版 TextView", SuperTextViewFragment.class));
 
         mItemAdapter.setNewData(mItems);
         mItemAdapter.setOnItemClickCallback(new ItemAdapter.OnItemClickCallback() {

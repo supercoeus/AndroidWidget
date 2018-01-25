@@ -5,20 +5,30 @@ package com.github.airsaid.androidwidget.data;
  */
 public class Item {
 
-    private String item;
+    private String title;
+    private String desc;
     private Class  cls;
 
-    public Item(String item, Class cls){
-        this.item = item;
-        this.cls  = cls;
+    public Item(String title, String desc, Class cls){
+        this.title = title;
+        this.desc  = desc;
+        this.cls   = cls;
     }
 
-    public String getItem() {
-        return item;
+    public String getTitle() {
+        return title;
     }
 
-    public void setItem(String item) {
-        this.item = item;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public Class getCls() {
@@ -27,5 +37,14 @@ public class Item {
 
     public void setCls(Class cls) {
         this.cls = cls;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "title='" + title + '\'' +
+                ", desc='" + desc + '\'' +
+                ", cls=" + cls +
+                '}';
     }
 }

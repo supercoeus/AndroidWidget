@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar.setSubtitle(R.string.app_desc);
         setSupportActionBar(mToolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements
                                 .getBackStackEntryCount();
                         if(backStackEntryCount == 0){
                             mToolbar.setTitle(R.string.app_name);
+                            mToolbar.setSubtitle(R.string.app_desc);
                         }
                     }
                 });
@@ -113,11 +115,11 @@ public class MainActivity extends AppCompatActivity implements
             Object instance = item.getCls().newInstance();
             if(instance instanceof Fragment){
                 Fragment fragment = (Fragment) instance;
-                setTitle(item.getItem());
+                setTitle(item.getTitle(), item.getDesc());
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.container, fragment, item.getItem())
-                        .addToBackStack(item.getItem())
+                        .replace(R.id.container, fragment, item.getTitle())
+                        .addToBackStack(item.getTitle())
                         .commit();
             }
         } catch (Exception e) {
@@ -125,7 +127,8 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
-    private void setTitle(String title){
+    private void setTitle(String title, String desc){
         mToolbar.setTitle(title);
+        mToolbar.setSubtitle(desc);
     }
 }

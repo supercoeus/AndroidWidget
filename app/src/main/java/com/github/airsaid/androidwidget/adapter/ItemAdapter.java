@@ -25,12 +25,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new ItemViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(android.R.layout.simple_list_item_1, parent, false));
+                .inflate(android.R.layout.simple_list_item_2, parent, false));
     }
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
-        holder.textView.setText(mList.get(position).getItem());
+        Item item = mList.get(position);
+        holder.txtTitle.setText(item.getTitle());
+        holder.txtDesc.setText(item.getDesc());
         final int adapterPosition = holder.getAdapterPosition();
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,10 +50,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     }
 
     static class ItemViewHolder extends RecyclerView.ViewHolder{
-        TextView textView;
+        TextView txtTitle;
+        TextView txtDesc;
         ItemViewHolder(View itemView) {
             super(itemView);
-            this.textView = itemView.findViewById(android.R.id.text1);
+            this.txtTitle = itemView.findViewById(android.R.id.text1);
+            this.txtDesc = itemView.findViewById(android.R.id.text2);
         }
     }
 
