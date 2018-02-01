@@ -1,4 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_view"
+            android:icon="@drawable/ic_menu_view"
+            android:orderInCategory="0"
+            android:title="继承 View 实现"/>
 
+        <item
+            android:id="@+id/nav_has_view"
+            android:icon="@drawable/ic_menu_has_view"
+            android:orderInCategory="1"
+            android:title="继承已有 View 实现"/>
+
+        <item
+            android:id="@+id/nav_layout"
+            android:icon="@drawable/ic_menu_layout"
+            android:orderInCategory="2"
+            android:title="继承 ViewGroup 实现"/>
+
+        <item
+            android:id="@+id/nav_has_layout"
+            android:icon="@drawable/ic_menu_has_layout"
+            android:orderInCategory="3"
+            android:title="继承已有 ViewGroup 实现"/>
+    </group>
 </menu>

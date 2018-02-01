@@ -25,9 +25,10 @@ import com.github.airsaid.androidwidget.data.Item;
  */
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
-        MainFragment.OnItemClickCallback {
+        MainFragment.OnItemClickCallback, FragmentManager.OnBackStackChangedListener {
 
     private Toolbar mToolbar;
+    private MainFragment mMainFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,37 +46,21 @@ public class MainActivity extends AppCompatActivity implements
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.nav_view);
+
+        getSupportFragmentManager().addOnBackStackChangedListener(this);
 
         if(savedInstanceState == null){
-            MainFragment mainFragment = MainFragment.newInstance();
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .add(R.id.container, mainFragment, MainFragment.class.getSimpleName())
-                    .commit();
-            mainFragment.setOnItemClickCallback(this);
+            setMainFragment(-1);
         }
-
-        getSupportFragmentManager()
-                .addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
-                    @Override
-                    public void onBackStackChanged() {
-                        int backStackEntryCount = getSupportFragmentManager()
-                                .getBackStackEntryCount();
-                        if(backStackEntryCount == 0){
-                            mToolbar.setTitle(R.string.app_name);
-                            mToolbar.setSubtitle(R.string.app_desc);
-                        }
-                    }
-                });
     }
 
     @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+    public void onBackStackChanged() {
+        int backStackEntryCount = getSupportFragmentManager()
+                .getBackStackEntryCount();
+        if(backStackEntryCount == 0){
+            setTitle(getString(R.string.app_name), getString(R.string.app_desc));
         }
     }
 
@@ -100,26 +85,52 @@ public class MainActivity extends AppCompatActivity implements
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        setMainFragment(item.getOrder());
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    @Override
-    public void onItemClickListener(Item item) {
-        switchFragment(item);
+    private void setMainFragment(int type){
+        // 如果 fragment 回退栈中有 fragment, 则退出, 避免返回时错乱
+        FragmentManager fm = getSupportFragmentManager();
+        while (fm.getBackStackEntryCount() > 0){
+            fm.popBackStackImmediate();
+        }
+        if(mMainFragment == null){
+            mMainFragment = MainFragment.newInstance();
+            mMainFragment.setOnItemClickCallback(this);
+        }
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, mMainFragment, MainFragment.class.getSimpleName())
+                .commit();
+        if(type != -1){
+            mMainFragment.setType(type);
+        }
     }
 
-    public void switchFragment(Item item){
+    @Override
+    public void onItemClickListener(Item item) {
+        switchPage(item);
+    }
+
+    /**
+     * 切换到对应的页面.
+     * @param menu 菜单条目.
+     */
+    private void switchPage(Item menu){
         try {
-            Object instance = item.getCls().newInstance();
-            if(instance instanceof Fragment){
-                Fragment fragment = (Fragment) instance;
-                setTitle(item.getTitle(), item.getDesc());
+            Object obj = menu.getCls().newInstance();
+            if(obj instanceof Fragment){
+                // 设置对应标题
+                setTitle(menu.getTitle(), menu.getDesc());
+                // 切换页面
+                Fragment fragment = (Fragment) obj;
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.container, fragment, item.getTitle())
-                        .addToBackStack(item.getTitle())
+                        .add(R.id.container, fragment, menu.getTitle())
+                        .addToBackStack(menu.getTitle())
                         .commit();
             }
         } catch (Exception e) {
@@ -130,5 +141,15 @@ public class MainActivity extends AppCompatActivity implements
     private void setTitle(String title, String desc){
         mToolbar.setTitle(title);
         mToolbar.setSubtitle(desc);
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

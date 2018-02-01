@@ -68,6 +68,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         notifyDataSetChanged();
     }
 
+    /**
+     * 获取数据.
+     * @return item.
+     */
+    public List<Item> getData(){
+        return mList;
+    }
+
     private OnItemClickCallback mOnItemClickCallback;
 
     public interface OnItemClickCallback{
