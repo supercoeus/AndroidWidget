@@ -14,10 +14,12 @@ import com.github.airsaid.androidwidget.data.Item;
 import com.github.airsaid.androidwidget.ui.AmountViewFragment;
 import com.github.airsaid.androidwidget.ui.CalendarViewFragment;
 import com.github.airsaid.androidwidget.ui.FlowLayoutFragment;
+import com.github.airsaid.androidwidget.ui.InputCodeLayoutFragment;
 import com.github.airsaid.androidwidget.ui.SimpleLinearLayoutFragment;
 import com.github.airsaid.androidwidget.ui.SuperTextViewFragment;
 import com.github.airsaid.androidwidget.widget.AmountView;
 import com.github.airsaid.androidwidget.widget.FlowLayout;
+import com.github.airsaid.androidwidget.widget.InputCodeLayout;
 import com.github.airsaid.androidwidget.widget.SimpleLinearLayout;
 import com.github.airsaid.androidwidget.widget.SuperTextView;
 import com.github.airsaid.calendarview.widget.CalendarView;
@@ -79,6 +81,10 @@ public class MainFragment extends Fragment{
         mHasLayoutItems.add(new Item(AmountView.class.getSimpleName(),
                 "数量加减控件",
                 AmountViewFragment.class));
+
+        mHasLayoutItems.add(new Item(InputCodeLayout.class.getSimpleName(),
+                "输入验证码布局",
+                InputCodeLayoutFragment.class));
 
         setType(0);
     }
