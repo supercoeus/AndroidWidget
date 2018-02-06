@@ -18,6 +18,8 @@ import com.github.airsaid.androidwidget.widget.AmountView;
 
 /**
  * @author airsaid
+ *
+ * {@link AmountView} 演示.
  */
 public class AmountViewFragment extends Fragment implements SeekBar.OnSeekBarChangeListener {
 

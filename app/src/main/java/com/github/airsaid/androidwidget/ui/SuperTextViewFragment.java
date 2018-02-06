@@ -17,7 +17,7 @@ import com.github.airsaid.androidwidget.widget.SuperTextView;
 /**
  * @author airsaid
  *
- * {@link com.github.airsaid.androidwidget.widget.SuperTextView} 演示.
+ * {@link SuperTextView} 演示.
  */
 public class SuperTextViewFragment extends Fragment implements SeekBar.OnSeekBarChangeListener,
         RadioGroup.OnCheckedChangeListener {

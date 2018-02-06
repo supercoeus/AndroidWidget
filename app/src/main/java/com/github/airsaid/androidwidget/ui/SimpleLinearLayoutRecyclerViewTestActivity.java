@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.github.airsaid.androidwidget.R;
+import com.github.airsaid.androidwidget.widget.SimpleLinearLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +19,8 @@ import java.util.List;
 
 /**
  * @author airsaid
+ *
+ * {@link SimpleLinearLayout} 演示.
  */
 public class SimpleLinearLayoutRecyclerViewTestActivity extends AppCompatActivity{
 

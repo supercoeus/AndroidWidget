@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.github.airsaid.androidwidget.adapter.ItemAdapter;
 import com.github.airsaid.androidwidget.data.Item;
 import com.github.airsaid.androidwidget.ui.AmountViewFragment;
+import com.github.airsaid.androidwidget.ui.CalendarViewFragment;
 import com.github.airsaid.androidwidget.ui.FlowLayoutFragment;
 import com.github.airsaid.androidwidget.ui.SimpleLinearLayoutFragment;
 import com.github.airsaid.androidwidget.ui.SuperTextViewFragment;
@@ -19,6 +20,7 @@ import com.github.airsaid.androidwidget.widget.AmountView;
 import com.github.airsaid.androidwidget.widget.FlowLayout;
 import com.github.airsaid.androidwidget.widget.SimpleLinearLayout;
 import com.github.airsaid.androidwidget.widget.SuperTextView;
+import com.github.airsaid.calendarview.widget.CalendarView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,9 +60,9 @@ public class MainFragment extends Fragment{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mViewItems.add(new Item(FlowLayout.class.getSimpleName(),
-                "自定义流布局",
-                FlowLayoutFragment.class));
+        mViewItems.add(new Item(CalendarView.class.getSimpleName(),
+                "自定义可多选日历控件",
+                CalendarViewFragment.class));
 
         mHasViewItems.add(new Item(SuperTextView.class.getSimpleName(),
                 "增强版 TextView",
@@ -69,6 +71,10 @@ public class MainFragment extends Fragment{
         mLayoutItems.add(new Item(SimpleLinearLayout.class.getSimpleName(),
                 "简易版 LinearLayout",
                 SimpleLinearLayoutFragment.class));
+
+        mLayoutItems.add(new Item(FlowLayout.class.getSimpleName(),
+                "自定义流布局",
+                FlowLayoutFragment.class));
 
         mHasLayoutItems.add(new Item(AmountView.class.getSimpleName(),
                 "数量加减控件",
