@@ -1,14 +1,16 @@
 package com.github.airsaid.androidwidget.ui;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.TextView;
 
 import com.github.airsaid.androidwidget.R;
+import com.github.airsaid.androidwidget.data.DataFactory;
 import com.github.airsaid.androidwidget.widget.FlowLayout;
 
 import java.util.Random;
@@ -42,13 +44,7 @@ public class FlowLayoutFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_add:
-                Button button = new Button(getContext());
-                StringBuilder sb = new StringBuilder();
-                for (int i = -1; i < mRandom.nextInt(5); i++) {
-                    sb.append("button");
-                }
-                button.setText(sb.toString().concat(String.valueOf(mFlowLayout.getChildCount())));
-                mFlowLayout.addView(button);
+                addView();
                 break;
             case R.id.btn_delete:
                 if(mFlowLayout.getChildCount() > 0){
@@ -57,6 +53,21 @@ public class FlowLayoutFragment extends Fragment implements View.OnClickListener
                 break;
             default:
         }
+    }
+
+    @SuppressWarnings("all")
+    private void addView() {
+        TextView textView = new TextView(getContext());
+        textView.setTextSize(20f);
+        textView.setTextColor(Color.WHITE);
+        textView.setPadding(10, 10, 10, 10);
+        textView.setBackgroundResource(R.color.colorPrimary);
+        textView.setText(DataFactory.ITEMS[mRandom.nextInt(DataFactory.ITEMS.length - 1)]);
+        ViewGroup.MarginLayoutParams lp = new ViewGroup.MarginLayoutParams(
+                ViewGroup.MarginLayoutParams.WRAP_CONTENT, ViewGroup.MarginLayoutParams.WRAP_CONTENT
+        );
+        lp.topMargin = lp.rightMargin = lp.bottomMargin = 10;
+        mFlowLayout.addView(textView, lp);
     }
 
 }

@@ -13,7 +13,57 @@
             android:id="@+id/flowLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent">
+            android:background="@color/colorAccent"
+            android:padding="@dimen/padding">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="10dp"
+                android:text="@string/app_name"
+                android:textColor="@color/textWhite"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin"
+                android:background="@color/colorPrimary"
+                android:padding="10dp"
+                android:text="@string/app_desc"
+                android:textColor="@color/textWhite"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="10dp"
+                android:text="@string/about_me"
+                android:textColor="@color/textWhite"
+                android:textSize="10sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin"
+                android:layout_marginStart="@dimen/margin"
+                android:background="@color/colorPrimary"
+                android:padding="10dp"
+                android:text="@string/author"
+                android:textColor="@color/textWhite"
+                android:textSize="26sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin"
+                android:background="@color/colorPrimary"
+                android:padding="10dp"
+                android:text="@string/author_link"
+                android:textColor="@color/textWhite"
+                android:textSize="20sp"/>
 
         </com.github.airsaid.androidwidget.widget.FlowLayout>
     </ScrollView>

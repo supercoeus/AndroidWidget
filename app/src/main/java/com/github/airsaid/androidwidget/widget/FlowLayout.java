@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 /**
  * @author airsaid
  *
- * 流布局. (目前只实现了基础功能, 待加入: gravity / 分割线)
+ * 流布局. (目前只实现了基础功能, 以及子 View 的 margin, 待加入: gravity / 分割线 / 动画)
  */
 public class FlowLayout extends ViewGroup {
 
@@ -28,54 +28,56 @@ public class FlowLayout extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        // 获取布局宽度
-        int widthSize  = MeasureSpec.getSize(widthMeasureSpec);
         // 获取布局 padding
         int pl = getPaddingLeft();
         int pt = getPaddingTop();
         int pr = getPaddingRight();
         int pb = getPaddingBottom();
         // 初始化布局的测量宽高
-        int measuredWidth  = widthSize;
+        int measuredWidth  = MeasureSpec.getSize(widthMeasureSpec);
         int measuredHeight = pt + pb;
-        // 初始化当前行中已测量控件的总宽度
-        int totalChildWidth = 0;
         // 初始化子 View 位置信息
         int childCount = getChildCount();
         initLayout(childCount);
+        // 当前行中已测量控件的总宽度
+        int totalChildWidth = 0;
+        // 当前行高度
+        int lineHeight = 0;
         int childLeft  = pl;
-        int childTop   = pt;
+        int childTop;
         for (int i = 0; i < childCount; i++) {
             View childView = getChildAt(i);
             if(childView.getVisibility() == View.GONE){
                 continue;
             }
+            // 测量子 View 并获取子 View 尺寸信息
             measureChildWithMargins(childView, widthMeasureSpec, 0, heightMeasureSpec, 0);
+            MarginLayoutParams lp = (MarginLayoutParams) childView.getLayoutParams();
             int childMeasuredWidth  = childView.getMeasuredWidth();
             int childMeasuredHeight = childView.getMeasuredHeight();
-            // 获取剩余宽度（剩余宽度 = 布局宽度 - 当前行中已测量控件的总宽度）
-            int remainWidth = widthSize - totalChildWidth;
+            int childWidth  = childMeasuredWidth + lp.leftMargin + lp.rightMargin;
+            int childHeight = childMeasuredHeight + lp.topMargin + lp.bottomMargin;
+            // 获取剩余宽度（剩余宽度 = 布局可用宽度 - 当前行中已测量控件的总宽度）
+            int remainWidth = measuredWidth - pl - pr - totalChildWidth;
             // 判断当前控件是否能放置下
-            if(childMeasuredWidth <= remainWidth){
-                // 能放下，保存布局信息
-                saveLayout(i, childLeft, childTop, childMeasuredWidth, childMeasuredHeight);
-                childLeft += childMeasuredWidth;
-                // 没有换行则宽度累加
-                totalChildWidth += childMeasuredWidth;
-                // 设置默认的测量宽度
-                if(measuredHeight == pt + pb){
-                    measuredHeight += childMeasuredHeight;
-                }
-            }else{
-                // 换行
+            if(childWidth > remainWidth){
+                // 放不下, 换行处理
                 childLeft = pl;
-                childTop += childMeasuredHeight;
-                saveLayout(i, childLeft, childTop, childMeasuredWidth, childMeasuredHeight);
-                childLeft += childMeasuredWidth;
-                totalChildWidth = childMeasuredWidth;
-                measuredHeight += childMeasuredHeight;
+                measuredHeight += lineHeight;
+                totalChildWidth = lineHeight = 0;
             }
+            // 获取行高 (行高 = 当前行最大的 View 高度)
+            lineHeight = Math.max(lineHeight, childHeight);
+            // 能放下, 保存布局信息
+            childLeft += lp.leftMargin;
+            childTop = lp.topMargin + (measuredHeight - pt);
+            saveLayout(i, childLeft, childTop, childMeasuredWidth, childMeasuredHeight);
+            childLeft += childMeasuredWidth + lp.rightMargin;
+            // 没有换行则宽度累加
+            totalChildWidth += childWidth;
         }
+        // 加上最后一行高度
+        measuredHeight += lineHeight;
         measuredWidth  = resolveSize(measuredWidth, widthMeasureSpec);
         measuredHeight = resolveSize(measuredHeight, heightMeasureSpec);
         setMeasuredDimension(measuredWidth, measuredHeight);
@@ -118,5 +120,10 @@ public class FlowLayout extends ViewGroup {
     @Override @SuppressWarnings("all")
     protected LayoutParams generateDefaultLayoutParams() {
         return new MarginLayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+    }
+
+    @Override
+    protected boolean checkLayoutParams(ViewGroup.LayoutParams p) {
+        return p instanceof MarginLayoutParams;
     }
 }
