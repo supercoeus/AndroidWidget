@@ -90,4 +90,9 @@
         <!--输入框显示位置-->
         <attr name="android:gravity"/>
     </declare-styleable>
+
+    <!-- 弹跳 View -->
+    <declare-styleable name="BounceView">
+        <attr name="bbv_drawable" format="reference"/>
+    </declare-styleable>
 </resources>

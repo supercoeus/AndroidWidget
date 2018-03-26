@@ -12,12 +12,14 @@ import android.view.ViewGroup;
 import com.github.airsaid.androidwidget.adapter.ItemAdapter;
 import com.github.airsaid.androidwidget.data.Item;
 import com.github.airsaid.androidwidget.ui.AmountViewFragment;
+import com.github.airsaid.androidwidget.ui.BounceViewFragment;
 import com.github.airsaid.androidwidget.ui.CalendarViewFragment;
 import com.github.airsaid.androidwidget.ui.FlowLayoutFragment;
 import com.github.airsaid.androidwidget.ui.InputCodeLayoutFragment;
 import com.github.airsaid.androidwidget.ui.SimpleLinearLayoutFragment;
 import com.github.airsaid.androidwidget.ui.SuperTextViewFragment;
 import com.github.airsaid.androidwidget.widget.AmountView;
+import com.github.airsaid.androidwidget.widget.BounceView;
 import com.github.airsaid.androidwidget.widget.FlowLayout;
 import com.github.airsaid.androidwidget.widget.InputCodeLayout;
 import com.github.airsaid.androidwidget.widget.SimpleLinearLayout;
@@ -65,6 +67,10 @@ public class MainFragment extends Fragment{
         mViewItems.add(new Item(CalendarView.class.getSimpleName(),
                 "自定义可多选日历控件",
                 CalendarViewFragment.class));
+
+        mViewItems.add(new Item(BounceView.class.getSimpleName(),
+                "贝塞尔曲线实现的弹跳 View",
+                BounceViewFragment.class));
 
         mHasViewItems.add(new Item(SuperTextView.class.getSimpleName(),
                 "增强版 TextView",
