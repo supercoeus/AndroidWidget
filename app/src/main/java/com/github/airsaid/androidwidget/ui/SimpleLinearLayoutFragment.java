@@ -23,8 +23,6 @@ import com.github.airsaid.androidwidget.widget.SimpleLinearLayout;
 
 /**
  * @author airsaid
- *
- * {@link SimpleLinearLayout} 演示.
  */
 public class SimpleLinearLayoutFragment extends Fragment implements
         CompoundButton.OnCheckedChangeListener,

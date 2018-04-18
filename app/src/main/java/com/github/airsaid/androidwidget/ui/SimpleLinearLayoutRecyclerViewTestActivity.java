@@ -19,8 +19,6 @@ import java.util.List;
 
 /**
  * @author airsaid
- *
- * {@link SimpleLinearLayout} 演示.
  */
 public class SimpleLinearLayoutRecyclerViewTestActivity extends AppCompatActivity{
 

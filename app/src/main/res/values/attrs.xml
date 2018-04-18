@@ -95,4 +95,20 @@
     <declare-styleable name="BounceView">
         <attr name="bbv_drawable" format="reference"/>
     </declare-styleable>
+
+    <!-- Default StaffView style. -->
+    <attr name="staffViewStyle" format="reference" />
+
+    <declare-styleable name="StaffView">
+        <attr name="sv_staff" format="reference" />
+        <attr name="sv_normalLabelColor" format="color|reference" />
+        <attr name="sv_selectLabelColor" format="color|reference" />
+        <attr name="sv_labelMarginTop" format="dimension|reference" />
+        <attr name="sv_labelTextSize" format="dimension|reference" />
+        <attr name="sv_extraTextSize" format="dimension|reference" />
+        <attr name="sv_extraMarginTop" format="dimension|reference" />
+        <attr name="sv_extraMarginLeft" format="dimension|reference" />
+        <attr name="sv_showCursor" format="boolean|reference" />
+        <attr name="sv_cursorDrawable" format="reference" />
+    </declare-styleable>
 </resources>

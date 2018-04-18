@@ -17,12 +17,14 @@ import com.github.airsaid.androidwidget.ui.CalendarViewFragment;
 import com.github.airsaid.androidwidget.ui.FlowLayoutFragment;
 import com.github.airsaid.androidwidget.ui.InputCodeLayoutFragment;
 import com.github.airsaid.androidwidget.ui.SimpleLinearLayoutFragment;
+import com.github.airsaid.androidwidget.ui.StaffViewFragment;
 import com.github.airsaid.androidwidget.ui.SuperTextViewFragment;
 import com.github.airsaid.androidwidget.widget.AmountView;
 import com.github.airsaid.androidwidget.widget.BounceView;
 import com.github.airsaid.androidwidget.widget.FlowLayout;
 import com.github.airsaid.androidwidget.widget.InputCodeLayout;
 import com.github.airsaid.androidwidget.widget.SimpleLinearLayout;
+import com.github.airsaid.androidwidget.widget.StaffView;
 import com.github.airsaid.androidwidget.widget.SuperTextView;
 import com.github.airsaid.calendarview.widget.CalendarView;
 
@@ -32,7 +34,7 @@ import java.util.List;
 /**
  * @author airsaid
  */
-public class MainFragment extends Fragment{
+public class MainFragment extends Fragment {
 
     private ItemAdapter mItemAdapter;
     private List<Item> mViewItems       = new ArrayList<>();
@@ -50,12 +52,8 @@ public class MainFragment extends Fragment{
         RecyclerView recyclerView = new RecyclerView(getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mItemAdapter = new ItemAdapter();
-        mItemAdapter.setOnItemClickCallback(new ItemAdapter.OnItemClickCallback() {
-            @Override
-            public void onItemClickListener(View v, int position) {
-                mOnItemClickCallback.onItemClickListener(mItemAdapter.getData().get(position));
-            }
-        });
+        mItemAdapter.setOnItemClickCallback((v, position) ->
+                mOnItemClickCallback.onItemClickListener(mItemAdapter.getData().get(position)));
         recyclerView.setAdapter(mItemAdapter);
         return recyclerView;
     }
@@ -71,6 +69,10 @@ public class MainFragment extends Fragment{
         mViewItems.add(new Item(BounceView.class.getSimpleName(),
                 "贝塞尔曲线实现的弹跳 View",
                 BounceViewFragment.class));
+
+        mViewItems.add(new Item(StaffView.class.getSimpleName(),
+                "自定义乐谱 View",
+                StaffViewFragment.class));
 
         mHasViewItems.add(new Item(SuperTextView.class.getSimpleName(),
                 "增强版 TextView",
@@ -116,6 +118,7 @@ public class MainFragment extends Fragment{
     interface OnItemClickCallback{
         /**
          * 点击了条目.
+         *
          * @param item item 数据.
          */
         void onItemClickListener(Item item);
@@ -123,6 +126,7 @@ public class MainFragment extends Fragment{
 
     /**
      * 设置条目点击监听回调.
+     *
      * @param callback 回调接口.
      */
     public void setOnItemClickCallback(OnItemClickCallback callback){

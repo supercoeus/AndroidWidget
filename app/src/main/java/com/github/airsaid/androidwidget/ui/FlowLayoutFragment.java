@@ -17,8 +17,6 @@ import java.util.Random;
 
 /**
  * @author airsaid
- *
- * {@link FlowLayout} 演示.
  */
 public class FlowLayoutFragment extends Fragment implements View.OnClickListener {
 

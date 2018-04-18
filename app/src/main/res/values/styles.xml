@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="staffViewStyle">@style/StaffView</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -17,4 +18,16 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
+    <!-- Default StaffView style. -->
+    <style name="StaffView">
+        <item name="sv_staff">@mipmap/ic_staff</item>
+        <item name="sv_normalLabelColor">@color/colorPrimary</item>
+        <item name="sv_selectLabelColor">@color/colorAccent</item>
+        <item name="sv_labelMarginTop">4dp</item>
+        <item name="sv_labelTextSize">16sp</item>
+        <item name="sv_cursorDrawable">@drawable/shape_cursor</item>
+        <item name="sv_extraTextSize">10sp</item>
+        <item name="sv_extraMarginTop">14dp</item>
+        <item name="sv_extraMarginLeft">6dp</item>
+    </style>
 </resources>

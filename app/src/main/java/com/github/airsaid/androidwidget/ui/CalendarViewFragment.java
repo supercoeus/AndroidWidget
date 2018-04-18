@@ -25,8 +25,6 @@ import java.util.Locale;
 
 /**
  * @author airsaid
- *
- * {@link CalendarView} 演示.
  */
 public class CalendarViewFragment extends Fragment implements View.OnClickListener {
 

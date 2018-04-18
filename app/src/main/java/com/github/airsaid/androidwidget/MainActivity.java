@@ -19,9 +19,9 @@ import com.github.airsaid.androidwidget.data.Item;
 
 
 /**
- * @author airsaid
- *
  * Android 自定义控件集.
+ *
+ * @author airsaid
  */
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
