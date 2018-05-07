@@ -26,7 +26,10 @@ import com.github.airsaid.androidwidget.data.Item;
  */
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
-        MainFragment.OnItemClickCallback, FragmentManager.OnBackStackChangedListener {
+        MainFragment.OnItemClickCallback,
+        FragmentManager.OnBackStackChangedListener {
+
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     private Toolbar mToolbar;
     private MainFragment mMainFragment;
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements
 
         getSupportFragmentManager().addOnBackStackChangedListener(this);
 
-        Log.e("test", "savedInstanceState: " + savedInstanceState);
+        Log.d(TAG, "savedInstanceState: " + savedInstanceState);
         if(savedInstanceState == null){
             setMainFragment(-1);
         }
@@ -100,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements
             fm.popBackStackImmediate();
         }
 
-        Log.e("test", "MainFragment: " + mMainFragment);
+        Log.d(TAG, "MainFragment: " + mMainFragment);
         if(mMainFragment == null){
             mMainFragment = MainFragment.newInstance();
             mMainFragment.setOnItemClickCallback(this);
