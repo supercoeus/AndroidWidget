@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="staffViewStyle">@style/StaffView</item>
+        <item name="progressBarViewStyle">@style/ProgressBarView</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -30,4 +31,19 @@
         <item name="sv_extraMarginTop">14dp</item>
         <item name="sv_extraMarginLeft">6dp</item>
     </style>
+
+    <!-- Default ProgressBarView style. -->
+    <style name="ProgressBarView">
+        <item name="pbv_progressWidth">10dp</item>
+        <item name="pbv_progressColor">@color/colorAccent</item>
+        <item name="pbv_progressBackground">@color/colorPrimary</item>
+        <item name="pbv_progressTextSize">16sp</item>
+        <item name="pbv_progressTextColor">@android:color/white</item>
+        <item name="pbv_describeText">completed</item>
+        <item name="pbv_describeTextSize">10sp</item>
+        <item name="pbv_describeTextColor">@android:color/white</item>
+        <item name="pbv_describeOffsetY">2dp</item>
+        <item name="pbv_startAngle">270</item>
+    </style>
+
 </resources>

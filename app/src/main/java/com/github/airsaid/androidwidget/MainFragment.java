@@ -16,6 +16,7 @@ import com.github.airsaid.androidwidget.ui.BounceViewFragment;
 import com.github.airsaid.androidwidget.ui.CalendarViewFragment;
 import com.github.airsaid.androidwidget.ui.FlowLayoutFragment;
 import com.github.airsaid.androidwidget.ui.InputCodeLayoutFragment;
+import com.github.airsaid.androidwidget.ui.ProgressBarViewFragment;
 import com.github.airsaid.androidwidget.ui.SimpleLinearLayoutFragment;
 import com.github.airsaid.androidwidget.ui.StaffViewFragment;
 import com.github.airsaid.androidwidget.ui.SuperTextViewFragment;
@@ -23,6 +24,7 @@ import com.github.airsaid.androidwidget.widget.AmountView;
 import com.github.airsaid.androidwidget.widget.BounceView;
 import com.github.airsaid.androidwidget.widget.FlowLayout;
 import com.github.airsaid.androidwidget.widget.InputCodeLayout;
+import com.github.airsaid.androidwidget.widget.ProgressBarView;
 import com.github.airsaid.androidwidget.widget.SimpleLinearLayout;
 import com.github.airsaid.androidwidget.widget.StaffView;
 import com.github.airsaid.androidwidget.widget.SuperTextView;
@@ -73,6 +75,10 @@ public class MainFragment extends Fragment {
         mViewItems.add(new Item(StaffView.class.getSimpleName(),
                 "自定义乐谱 View",
                 StaffViewFragment.class));
+
+        mViewItems.add(new Item(ProgressBarView.class.getSimpleName(),
+                "自定义进度条 View",
+                ProgressBarViewFragment.class));
 
         mHasViewItems.add(new Item(SuperTextView.class.getSimpleName(),
                 "增强版 TextView",

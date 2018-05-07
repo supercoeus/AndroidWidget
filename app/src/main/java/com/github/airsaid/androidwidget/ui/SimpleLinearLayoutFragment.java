@@ -24,9 +24,10 @@ import com.github.airsaid.androidwidget.widget.SimpleLinearLayout;
 /**
  * @author airsaid
  */
-public class SimpleLinearLayoutFragment extends Fragment implements
+public class SimpleLinearLayoutFragment extends BaseFragment implements
         CompoundButton.OnCheckedChangeListener,
-        RadioGroup.OnCheckedChangeListener, View.OnClickListener {
+        RadioGroup.OnCheckedChangeListener,
+        View.OnClickListener {
 
     private SimpleLinearLayout mSimpleLinearLayout;
     private LinearLayout mLinearLayout;
@@ -40,33 +41,26 @@ public class SimpleLinearLayoutFragment extends Fragment implements
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mSimpleLinearLayout = (SimpleLinearLayout) findViewById(R.id.simpleLinearLayout);
-        mLinearLayout = (LinearLayout) findViewById(R.id.linearLayout);
-        findViewById(R.id.btn_add).setOnClickListener(this);
-        findViewById(R.id.btn_delete).setOnClickListener(this);
-        ((RadioGroup) findViewById(R.id.rg_orientation))
+        mSimpleLinearLayout = view.findViewById(R.id.simpleLinearLayout);
+        mLinearLayout = view.findViewById(R.id.linearLayout);
+        view.findViewById(R.id.btn_add).setOnClickListener(this);
+        view.findViewById(R.id.btn_delete).setOnClickListener(this);
+        ((RadioGroup) view.findViewById(R.id.rg_orientation))
                 .setOnCheckedChangeListener(this);
-        ((CheckBox)findViewById(R.id.cbx_left)).setOnCheckedChangeListener(this);
-        ((CheckBox)findViewById(R.id.cbx_top)).setOnCheckedChangeListener(this);
-        ((CheckBox)findViewById(R.id.cbx_right)).setOnCheckedChangeListener(this);
-        ((CheckBox)findViewById(R.id.cbx_bottom)).setOnCheckedChangeListener(this);
-        ((CheckBox)findViewById(R.id.cbx_center_v)).setOnCheckedChangeListener(this);
-        ((CheckBox)findViewById(R.id.cbx_center_h)).setOnCheckedChangeListener(this);
-        ((CheckBox)findViewById(R.id.cbx_center)).setOnCheckedChangeListener(this);
-        ((CheckBox)findViewById(R.id.cbx_left2)).setOnCheckedChangeListener(this);
-        ((CheckBox)findViewById(R.id.cbx_top2)).setOnCheckedChangeListener(this);
-        ((CheckBox)findViewById(R.id.cbx_right2)).setOnCheckedChangeListener(this);
-        ((CheckBox)findViewById(R.id.cbx_bottom2)).setOnCheckedChangeListener(this);
-        ((CheckBox)findViewById(R.id.cbx_center_v2)).setOnCheckedChangeListener(this);
-        ((CheckBox)findViewById(R.id.cbx_center_h2)).setOnCheckedChangeListener(this);
-        ((CheckBox)findViewById(R.id.cbx_center2)).setOnCheckedChangeListener(this);
-    }
-
-    public View findViewById(@IdRes int id){
-        if(getView() != null){
-            return getView().findViewById(id);
-        }
-        return null;
+        ((CheckBox) view.findViewById(R.id.cbx_left)).setOnCheckedChangeListener(this);
+        ((CheckBox) view.findViewById(R.id.cbx_top)).setOnCheckedChangeListener(this);
+        ((CheckBox) view.findViewById(R.id.cbx_right)).setOnCheckedChangeListener(this);
+        ((CheckBox) view.findViewById(R.id.cbx_bottom)).setOnCheckedChangeListener(this);
+        ((CheckBox) view.findViewById(R.id.cbx_center_v)).setOnCheckedChangeListener(this);
+        ((CheckBox) view.findViewById(R.id.cbx_center_h)).setOnCheckedChangeListener(this);
+        ((CheckBox) view.findViewById(R.id.cbx_center)).setOnCheckedChangeListener(this);
+        ((CheckBox) view.findViewById(R.id.cbx_left2)).setOnCheckedChangeListener(this);
+        ((CheckBox) view.findViewById(R.id.cbx_top2)).setOnCheckedChangeListener(this);
+        ((CheckBox) view.findViewById(R.id.cbx_right2)).setOnCheckedChangeListener(this);
+        ((CheckBox) view.findViewById(R.id.cbx_bottom2)).setOnCheckedChangeListener(this);
+        ((CheckBox) view.findViewById(R.id.cbx_center_v2)).setOnCheckedChangeListener(this);
+        ((CheckBox) view.findViewById(R.id.cbx_center_h2)).setOnCheckedChangeListener(this);
+        ((CheckBox) view.findViewById(R.id.cbx_center2)).setOnCheckedChangeListener(this);
     }
 
     @Override
@@ -77,7 +71,7 @@ public class SimpleLinearLayoutFragment extends Fragment implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.menu_rlv_test){
+        if (id == R.id.menu_rlv_test) {
             startActivity(new Intent(getContext(), SimpleLinearLayoutRecyclerViewTestActivity.class));
             return true;
         }
@@ -86,7 +80,7 @@ public class SimpleLinearLayoutFragment extends Fragment implements
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_add:
                 add();
                 break;
@@ -97,31 +91,31 @@ public class SimpleLinearLayoutFragment extends Fragment implements
         }
     }
 
-    private void add(){
+    private void add() {
         addView(mLinearLayout);
         addView(mSimpleLinearLayout);
     }
 
-    private void addView(ViewGroup layout){
+    private void addView(ViewGroup layout) {
         Button button = new Button(getContext());
         button.setText("button".concat(String.valueOf(layout.getChildCount() + 1)));
         layout.addView(button);
     }
 
-    private void delete(){
+    private void delete() {
         deleteView(mLinearLayout);
         deleteView(mSimpleLinearLayout);
     }
 
-    private void deleteView(ViewGroup layout){
-        if(layout.getChildCount() > 0){
+    private void deleteView(ViewGroup layout) {
+        if (layout.getChildCount() > 0) {
             layout.removeViewAt(layout.getChildCount() - 1);
         }
     }
 
     @Override
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-        switch (checkedId){
+        switch (checkedId) {
             case R.id.rb_vertical:
                 setOrientation(1);
                 break;
@@ -132,7 +126,7 @@ public class SimpleLinearLayoutFragment extends Fragment implements
         }
     }
 
-    private void setOrientation(int orientation){
+    private void setOrientation(int orientation) {
         mLinearLayout.setOrientation(orientation);
         mSimpleLinearLayout.setOrientation(orientation);
     }
@@ -146,16 +140,16 @@ public class SimpleLinearLayoutFragment extends Fragment implements
         int simpleGravity = mSimpleLinearLayout.getGravity();
 
         int gravity2 = android.view.Gravity.LEFT | android.view.Gravity.TOP;
-        if(mLinearLayout.getChildCount() > 0){
+        if (mLinearLayout.getChildCount() > 0) {
             LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mLinearLayout.getChildAt(0).getLayoutParams();
             gravity2 = lp.gravity;
         }
         int simpleGravity2 = 0;
-        if(mSimpleLinearLayout.getChildCount() > 0){
+        if (mSimpleLinearLayout.getChildCount() > 0) {
             SimpleLinearLayout.LayoutParams lp = (SimpleLinearLayout.LayoutParams) mSimpleLinearLayout.getChildAt(0).getLayoutParams();
             simpleGravity2 = lp.gravity;
         }
-        switch (buttonView.getId()){
+        switch (buttonView.getId()) {
             case R.id.cbx_left:
                 gravity = isChecked ? gravity | android.view.Gravity.LEFT : gravity ^ android.view.Gravity.LEFT;
                 simpleGravity = isChecked ? simpleGravity | Gravity.LEFT : simpleGravity ^ Gravity.LEFT;
@@ -218,12 +212,12 @@ public class SimpleLinearLayoutFragment extends Fragment implements
         setLayoutGravity(gravity2, simpleGravity2);
     }
 
-    private void setGravity(int gravity, int simpleGravity){
+    private void setGravity(int gravity, int simpleGravity) {
         mLinearLayout.setGravity(gravity);
         mSimpleLinearLayout.setGravity(simpleGravity);
     }
 
-    private void setLayoutGravity(int gravity, int simpleGravity){
+    private void setLayoutGravity(int gravity, int simpleGravity) {
         for (int i = 0; i < mLinearLayout.getChildCount(); i++) {
             View childView = mLinearLayout.getChildAt(i);
             LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) childView.getLayoutParams();

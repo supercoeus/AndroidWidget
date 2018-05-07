@@ -19,7 +19,7 @@ import com.github.airsaid.androidwidget.widget.AmountView;
 /**
  * @author airsaid
  */
-public class AmountViewFragment extends Fragment implements SeekBar.OnSeekBarChangeListener {
+public class AmountViewFragment extends BaseFragment implements SeekBar.OnSeekBarChangeListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -40,19 +40,16 @@ public class AmountViewFragment extends Fragment implements SeekBar.OnSeekBarCha
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mAmountView = view.findViewById(R.id.amountView);
-        mAmountView.setOnAmountChangedListener(new AmountView.OnAmountChangedListener() {
-            @Override
-            public void onAmountChanged(boolean isAdd, int changeAmount) {
-                if(changeAmount == 0){
-                    Toast.makeText(getContext(),
-                            "不可以再" + (isAdd ? "增加" : "减少") + "了!", Toast.LENGTH_SHORT).show();
-                }
-
-                int amount = mAmountView.getAmount();
-                Log.d(TAG, "amount: " + amount);
-                Log.d(TAG, "isAdd: " + isAdd);
-                Log.d(TAG, "changeAmount: " + changeAmount);
+        mAmountView.setOnAmountChangedListener((isAdd, changeAmount) -> {
+            if (changeAmount == 0) {
+                Toast.makeText(getContext(),
+                        "不可以再" + (isAdd ? "增加" : "减少") + "了!", Toast.LENGTH_SHORT).show();
             }
+
+            int amount = mAmountView.getAmount();
+            Log.d(TAG, "amount: " + amount);
+            Log.d(TAG, "isAdd: " + isAdd);
+            Log.d(TAG, "changeAmount: " + changeAmount);
         });
 
         mTxtWidth = view.findViewById(R.id.txt_width);
@@ -74,7 +71,7 @@ public class AmountViewFragment extends Fragment implements SeekBar.OnSeekBarCha
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         int id = seekBar.getId();
-        switch (id){
+        switch (id) {
             case R.id.sb_width:
                 mAmountView.setMiddleWidth(DimenUtils.dp2px(getContext(), progress));
                 mTxtWidth.setText("设置中间宽度：" + progress + "dp");
@@ -93,7 +90,7 @@ public class AmountViewFragment extends Fragment implements SeekBar.OnSeekBarCha
                 mTxtMax.setText("设置最大数量：" + progress);
                 break;
             case R.id.sb_step_size:
-                if(progress < 1){
+                if (progress < 1) {
                     progress = 1;
                 }
                 mAmountView.setStepSize(progress);

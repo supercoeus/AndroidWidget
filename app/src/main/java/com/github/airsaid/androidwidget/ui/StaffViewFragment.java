@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * @author airsaid
  */
-public class StaffViewFragment extends Fragment implements View.OnClickListener {
+public class StaffViewFragment extends BaseFragment implements View.OnClickListener {
 
     private static final long TIME = 4000;
 
@@ -66,7 +66,7 @@ public class StaffViewFragment extends Fragment implements View.OnClickListener 
         mStaffView.setData(getData());
     }
 
-    private List<StaffView.Model> getData(){
+    private List<StaffView.Model> getData() {
         List<StaffView.Model> lists = new ArrayList<>();
         for (double i = 0.1; i <= 0.9; i += 0.1) {
             StaffView.Model model = new StaffView.Model();

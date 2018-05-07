@@ -20,22 +20,22 @@ import java.util.List;
 /**
  * @author airsaid
  */
-public class SimpleLinearLayoutRecyclerViewTestActivity extends AppCompatActivity{
+public class SimpleLinearLayoutRecyclerViewTestActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recyclerview_test_simple_linearlayout);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new TestAdapter());
     }
 
-    class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>{
+    class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> {
 
         private List<String> mData;
 
-        public TestAdapter(){
+        public TestAdapter() {
             mData = new ArrayList<>();
             mData.addAll(Arrays.asList(getResources().getStringArray(android.R.array.phoneTypes)));
             mData.addAll(Arrays.asList(getResources().getStringArray(android.R.array.imProtocols)));
@@ -60,7 +60,7 @@ public class SimpleLinearLayoutRecyclerViewTestActivity extends AppCompatActivit
             return mData.size();
         }
 
-        class ViewHolder extends RecyclerView.ViewHolder{
+        class ViewHolder extends RecyclerView.ViewHolder {
 
             private final TextView text1;
 

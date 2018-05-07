@@ -18,7 +18,9 @@ import com.github.airsaid.androidwidget.widget.BounceView;
 /**
  * @author airsaid
  */
-public class BounceViewFragment extends Fragment implements SeekBar.OnSeekBarChangeListener, CompoundButton.OnCheckedChangeListener, View.OnClickListener {
+public class BounceViewFragment extends BaseFragment implements SeekBar.OnSeekBarChangeListener,
+        CompoundButton.OnCheckedChangeListener,
+        View.OnClickListener {
 
     private BounceView mBounceView;
     private TextView mTxtCount;

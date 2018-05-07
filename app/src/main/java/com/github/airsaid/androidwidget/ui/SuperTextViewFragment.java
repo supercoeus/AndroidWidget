@@ -34,7 +34,7 @@ public class SuperTextViewFragment extends Fragment implements SeekBar.OnSeekBar
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mSuperTextView = view.findViewById(R.id.superTextView2);
-        mTxtTagGravity  = view.findViewById(R.id.txt_tag_gravity);
+        mTxtTagGravity = view.findViewById(R.id.txt_tag_gravity);
         mTxtTagPosition = view.findViewById(R.id.txt_tag_position);
 
         ((RadioGroup) view.findViewById(R.id.rg_tag_gravity)).setOnCheckedChangeListener(this);
@@ -43,10 +43,10 @@ public class SuperTextViewFragment extends Fragment implements SeekBar.OnSeekBar
 
     @Override
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-        if(checkedId == R.id.rb_tag_start){
+        if (checkedId == R.id.rb_tag_start) {
             mSuperTextView.setTagGravity(SuperTextView.START);
             mTxtTagGravity.setText("setTagGravity(SuperTextView.START)");
-        }else if(checkedId == R.id.rb_tag_end){
+        } else if (checkedId == R.id.rb_tag_end) {
             mSuperTextView.setTagGravity(SuperTextView.END);
             mTxtTagGravity.setText("setTagGravity(SuperTextView.END)");
         }
@@ -56,7 +56,7 @@ public class SuperTextViewFragment extends Fragment implements SeekBar.OnSeekBar
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         int id = seekBar.getId();
-        switch (id){
+        switch (id) {
             case R.id.sb_tag_position:
                 mSuperTextView.setTagPosition(progress);
                 mTxtTagPosition.setText("setTagPosition(" + mSuperTextView.getTagPosition() + ")");

@@ -19,7 +19,7 @@ import com.github.airsaid.androidwidget.widget.InputCodeLayout;
 /**
  * @author airsaid
  */
-public class InputCodeLayoutFragment extends Fragment implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
+public class InputCodeLayoutFragment extends BaseFragment implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
 
     public static final String TAG = InputCodeLayoutFragment.class.getSimpleName();
 
@@ -31,28 +31,21 @@ public class InputCodeLayoutFragment extends Fragment implements SeekBar.OnSeekB
         return inflater.inflate(R.layout.fragment_input_code_layout, container, false);
     }
 
-    private View findViewById(@IdRes int id) {
-        return getView().findViewById(id);
-    }
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        findViewById(R.id.btn_normal).setOnClickListener(this);
-        findViewById(R.id.btn_password).setOnClickListener(this);
-        findViewById(R.id.btn_clear).setOnClickListener(this);
-        ((SeekBar) findViewById(R.id.sbr_number)).setOnSeekBarChangeListener(this);
-        ((SeekBar) findViewById(R.id.sbr_divide_width)).setOnSeekBarChangeListener(this);
-        ((SeekBar) findViewById(R.id.sbr_size)).setOnSeekBarChangeListener(this);
+        view.findViewById(R.id.btn_normal).setOnClickListener(this);
+        view.findViewById(R.id.btn_password).setOnClickListener(this);
+        view.findViewById(R.id.btn_clear).setOnClickListener(this);
+        ((SeekBar) view.findViewById(R.id.sbr_number)).setOnSeekBarChangeListener(this);
+        ((SeekBar) view.findViewById(R.id.sbr_divide_width)).setOnSeekBarChangeListener(this);
+        ((SeekBar) view.findViewById(R.id.sbr_size)).setOnSeekBarChangeListener(this);
 
-        mInputCodeLayout = (InputCodeLayout) findViewById(R.id.inputCodeLayout);
-        mInputCodeLayout.setOnInputCompleteListener(new InputCodeLayout.OnInputCompleteCallback() {
-            @Override
-            public void onInputCompleteListener(String code) {
-                Log.d(TAG, "输入的验证码为：" + code);
-                Toast.makeText(getContext(), "输入的验证码为：" + code, Toast.LENGTH_SHORT).show();
-            }
+        mInputCodeLayout = view.findViewById(R.id.inputCodeLayout);
+        mInputCodeLayout.setOnInputCompleteListener(code -> {
+            Log.d(TAG, "输入的验证码为：" + code);
+            Toast.makeText(getContext(), "输入的验证码为：" + code, Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -77,16 +70,16 @@ public class InputCodeLayoutFragment extends Fragment implements SeekBar.OnSeekB
         switch (seekBar.getId()) {
             case R.id.sbr_number:
                 mInputCodeLayout.setNumber(progress);
-                ((TextView) findViewById(R.id.txt_number)).setText("修改输入框数量(" + progress + ")");
+                ((TextView) getView().findViewById(R.id.txt_number)).setText("修改输入框数量(" + progress + ")");
                 break;
             case R.id.sbr_divide_width:
                 mInputCodeLayout.setDivideWidth(DimenUtils.dp2px(getContext(), progress));
-                ((TextView) findViewById(R.id.txt_divide_width)).setText("修改输入框间距(" + progress + ")");
+                ((TextView) getView().findViewById(R.id.txt_divide_width)).setText("修改输入框间距(" + progress + ")");
                 break;
             case R.id.sbr_size:
                 mInputCodeLayout.setWidth(DimenUtils.dp2px(getContext(), progress));
                 mInputCodeLayout.setHeight(DimenUtils.dp2px(getContext(), progress));
-                ((TextView) findViewById(R.id.txt_size)).setText("修改输入框大小(" + progress + ")");
+                ((TextView) getView().findViewById(R.id.txt_size)).setText("修改输入框大小(" + progress + ")");
                 break;
             default:
         }

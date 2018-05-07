@@ -18,7 +18,7 @@ import java.util.Random;
 /**
  * @author airsaid
  */
-public class FlowLayoutFragment extends Fragment implements View.OnClickListener {
+public class FlowLayoutFragment extends BaseFragment implements View.OnClickListener {
 
     private FlowLayout mFlowLayout;
     private Random mRandom;
@@ -40,12 +40,12 @@ public class FlowLayoutFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_add:
                 addView();
                 break;
             case R.id.btn_delete:
-                if(mFlowLayout.getChildCount() > 0){
+                if (mFlowLayout.getChildCount() > 0) {
                     mFlowLayout.removeViewAt(mFlowLayout.getChildCount() - 1);
                 }
                 break;
