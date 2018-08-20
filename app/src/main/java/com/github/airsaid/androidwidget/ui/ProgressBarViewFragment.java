@@ -35,7 +35,7 @@ public class ProgressBarViewFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         mRandom = new Random();
         mProgressBar = view.findViewById(R.id.progressBar);
-        view.findViewById(R.id.start).setOnClickListener(v -> {
+        mProgressBar.setOnClickListener(v -> {
             int progress = mRandom.nextInt(100);
             mProgressBar.setProgress(progress, true);
         });

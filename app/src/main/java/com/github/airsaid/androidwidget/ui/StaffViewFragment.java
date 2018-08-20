@@ -3,6 +3,7 @@ package com.github.airsaid.androidwidget.ui;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,6 +96,12 @@ public class StaffViewFragment extends BaseFragment implements View.OnClickListe
                 break;
             default:
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        mStaffView.stop();
+        super.onDestroyView();
     }
 
 }

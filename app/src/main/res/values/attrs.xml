@@ -128,4 +128,15 @@
         <attr name="pbv_describeOffsetY" format="dimension|reference" />
         <attr name="pbv_startAngle" format="float|reference" />
     </declare-styleable>
+
+    <!-- 倒计时 View -->
+    <declare-styleable name="CountdownView">
+        <attr name="cv_borderColor" format="color|reference"/>
+        <attr name="cv_borderWidth" format="dimension|reference"/>
+        <attr name="cv_progressColor" format="color|reference"/>
+        <attr name="cv_progressWidth" format="dimension|reference"/>
+        <attr name="cv_textColor" format="color|reference"/>
+        <attr name="cv_textSize" format="dimension|reference"/>
+        <attr name="cv_time" format="integer"/>
+    </declare-styleable>
 </resources>

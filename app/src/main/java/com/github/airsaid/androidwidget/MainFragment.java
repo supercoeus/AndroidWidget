@@ -5,29 +5,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.airsaid.androidwidget.adapter.ItemAdapter;
 import com.github.airsaid.androidwidget.data.Item;
-import com.github.airsaid.androidwidget.ui.AmountViewFragment;
-import com.github.airsaid.androidwidget.ui.BounceViewFragment;
-import com.github.airsaid.androidwidget.ui.CalendarViewFragment;
-import com.github.airsaid.androidwidget.ui.FlowLayoutFragment;
-import com.github.airsaid.androidwidget.ui.InputCodeLayoutFragment;
-import com.github.airsaid.androidwidget.ui.ProgressBarViewFragment;
-import com.github.airsaid.androidwidget.ui.SimpleLinearLayoutFragment;
-import com.github.airsaid.androidwidget.ui.StaffViewFragment;
-import com.github.airsaid.androidwidget.ui.SuperTextViewFragment;
-import com.github.airsaid.androidwidget.widget.AmountView;
-import com.github.airsaid.androidwidget.widget.BounceView;
-import com.github.airsaid.androidwidget.widget.FlowLayout;
-import com.github.airsaid.androidwidget.widget.InputCodeLayout;
-import com.github.airsaid.androidwidget.widget.ProgressBarView;
-import com.github.airsaid.androidwidget.widget.SimpleLinearLayout;
-import com.github.airsaid.androidwidget.widget.StaffView;
-import com.github.airsaid.androidwidget.widget.SuperTextView;
+import com.github.airsaid.androidwidget.ui.*;
+import com.github.airsaid.androidwidget.widget.*;
 import com.github.airsaid.calendarview.widget.CalendarView;
 
 import java.util.ArrayList;
@@ -79,6 +65,10 @@ public class MainFragment extends Fragment {
         mViewItems.add(new Item(ProgressBarView.class.getSimpleName(),
                 "自定义进度条 View",
                 ProgressBarViewFragment.class));
+
+        mViewItems.add(new Item(CountdownView.class.getSimpleName(),
+                "倒计时 View",
+                CountdownViewFragment.class));
 
         mHasViewItems.add(new Item(SuperTextView.class.getSimpleName(),
                 "增强版 TextView",
