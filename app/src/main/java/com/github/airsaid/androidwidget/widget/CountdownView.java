@@ -193,8 +193,6 @@ public class CountdownView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (mTime <= 0) return;
-
         // draw border
         mPaint.setColor(mBorderColor);
         mPaint.setStyle(Paint.Style.STROKE);
