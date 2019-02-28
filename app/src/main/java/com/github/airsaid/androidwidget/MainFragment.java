@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,6 +64,10 @@ public class MainFragment extends Fragment {
         mViewItems.add(new Item(ProgressBarView.class.getSimpleName(),
                 "自定义进度条 View",
                 ProgressBarViewFragment.class));
+
+        mViewItems.add(new Item(ArcProgressBarView.class.getSimpleName(),
+                "自定义弧形进度条 View",
+                ArcProgressBarViewFragment.class));
 
         mViewItems.add(new Item(CountdownView.class.getSimpleName(),
                 "倒计时 View",

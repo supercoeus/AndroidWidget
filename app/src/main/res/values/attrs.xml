@@ -2,131 +2,142 @@
 <resources>
 
     <attr name="gravity">
-        <flag name="left" value="0x01" />
-        <flag name="top" value="0x02" />
-        <flag name="right" value="0x04" />
-        <flag name="bottom" value="0x08" />
-        <flag name="center_vertical" value="0x10" />
-        <flag name="center_horizontal" value="0x20" />
-        <flag name="center" value="0x40" />
+        <flag name="left" value="0x01"/>
+        <flag name="top" value="0x02"/>
+        <flag name="right" value="0x04"/>
+        <flag name="bottom" value="0x08"/>
+        <flag name="center_vertical" value="0x10"/>
+        <flag name="center_horizontal" value="0x20"/>
+        <flag name="center" value="0x40"/>
     </attr>
 
     <attr name="layout_gravity">
-        <flag name="left" value="0x01" />
-        <flag name="top" value="0x02" />
-        <flag name="right" value="0x04" />
-        <flag name="bottom" value="0x08" />
-        <flag name="center_vertical" value="0x10" />
-        <flag name="center_horizontal" value="0x20" />
-        <flag name="center" value="0x40" />
+        <flag name="left" value="0x01"/>
+        <flag name="top" value="0x02"/>
+        <flag name="right" value="0x04"/>
+        <flag name="bottom" value="0x08"/>
+        <flag name="center_vertical" value="0x10"/>
+        <flag name="center_horizontal" value="0x20"/>
+        <flag name="center" value="0x40"/>
     </attr>
 
     <!-- 数量加减控件 -->
     <declare-styleable name="AmountView">
-        <attr name="av_btmWidth" format="dimension|reference" />
-        <attr name="av_btmHeight" format="dimension|reference" />
-        <attr name="av_middleWidth" format="dimension|reference" />
-        <attr name="av_leftBackground" format="reference" />
-        <attr name="av_middleBackground" format="reference" />
-        <attr name="av_rightBackground" format="reference" />
-        <attr name="av_textSize" format="dimension|reference" />
-        <attr name="av_textColor" format="color|reference" />
-        <attr name="av_isEditor" format="boolean|reference" />
-        <attr name="av_min" format="integer|reference" />
-        <attr name="av_max" format="integer|reference" />
-        <attr name="av_stepSize" format="integer|reference" />
-        <attr name="av_amount" format="integer|reference" />
+        <attr name="av_btmWidth" format="dimension|reference"/>
+        <attr name="av_btmHeight" format="dimension|reference"/>
+        <attr name="av_middleWidth" format="dimension|reference"/>
+        <attr name="av_leftBackground" format="reference"/>
+        <attr name="av_middleBackground" format="reference"/>
+        <attr name="av_rightBackground" format="reference"/>
+        <attr name="av_textSize" format="dimension|reference"/>
+        <attr name="av_textColor" format="color|reference"/>
+        <attr name="av_isEditor" format="boolean|reference"/>
+        <attr name="av_min" format="integer|reference"/>
+        <attr name="av_max" format="integer|reference"/>
+        <attr name="av_stepSize" format="integer|reference"/>
+        <attr name="av_amount" format="integer|reference"/>
     </declare-styleable>
 
     <!-- 增加版 TextView -->
     <declare-styleable name="SuperTextView">
-        <attr name="stv_background" format="color|reference" />
-        <attr name="stv_tagBackground" format="color|reference" />
-        <attr name="stv_tagTextSize" format="dimension|reference" />
-        <attr name="stv_tagTextColor" format="color|reference" />
-        <attr name="stv_tagMarginStart" format="dimension|reference" />
-        <attr name="stv_tagMarginEnd" format="dimension|reference" />
-        <attr name="stv_tagPosition" format="integer|reference" />
+        <attr name="stv_background" format="color|reference"/>
+        <attr name="stv_tagBackground" format="color|reference"/>
+        <attr name="stv_tagTextSize" format="dimension|reference"/>
+        <attr name="stv_tagTextColor" format="color|reference"/>
+        <attr name="stv_tagMarginStart" format="dimension|reference"/>
+        <attr name="stv_tagMarginEnd" format="dimension|reference"/>
+        <attr name="stv_tagPosition" format="integer|reference"/>
         <attr name="stv_tagGravity">
-            <enum name="start" value="1" />
-            <enum name="end" value="2" />
+            <enum name="start" value="1"/>
+            <enum name="end" value="2"/>
         </attr>
-        <attr name="stv_tags" format="reference" />
+        <attr name="stv_tags" format="reference"/>
     </declare-styleable>
 
     <!-- 简易版 LinearLayout -->
     <declare-styleable name="SimpleLinearLayout">
-        <attr name="android:orientation" />
-        <attr name="gravity" />
+        <attr name="android:orientation"/>
+        <attr name="gravity"/>
     </declare-styleable>
 
     <declare-styleable name="SimpleLinearLayout_Layout">
-        <attr name="layout_gravity" />
+        <attr name="layout_gravity"/>
     </declare-styleable>
 
     <!-- 验证码输入布局 -->
     <declare-styleable name="InputCodeLayout">
         <!--输入框数量-->
-        <attr name="icl_number" format="integer" />
+        <attr name="icl_number" format="integer"/>
         <!--输入框宽度-->
-        <attr name="icl_width" format="dimension|reference" />
+        <attr name="icl_width" format="dimension|reference"/>
         <!--输入框高度-->
-        <attr name="icl_height" format="dimension|reference" />
+        <attr name="icl_height" format="dimension|reference"/>
         <!--输入框之间的分割线宽度-->
-        <attr name="icl_divideWidth" format="dimension|reference" />
+        <attr name="icl_divideWidth" format="dimension|reference"/>
         <!--输入文字颜色-->
-        <attr name="icl_textColor" format="color|reference" />
+        <attr name="icl_textColor" format="color|reference"/>
         <!--输入文字大小-->
-        <attr name="icl_textSize" format="dimension|reference" />
+        <attr name="icl_textSize" format="dimension|reference"/>
         <!--有焦点时输入框背景-->
-        <attr name="icl_focusBackground" format="reference" />
+        <attr name="icl_focusBackground" format="reference"/>
         <!--无焦点时输入框背景-->
-        <attr name="icl_unFocusBackground" format="reference" />
+        <attr name="icl_unFocusBackground" format="reference"/>
         <!--显示模式-->
         <attr name="icl_showMode">
-            <enum name="normal" value="0" /><!--正常-->
-            <enum name="password" value="1" /><!--密码-->
+            <enum name="normal" value="0"/><!--正常-->
+            <enum name="password" value="1"/><!--密码-->
         </attr>
         <!--输入框显示位置-->
-        <attr name="android:gravity" />
+        <attr name="android:gravity"/>
     </declare-styleable>
 
     <!-- 弹跳 View -->
     <declare-styleable name="BounceView">
-        <attr name="bbv_drawable" format="reference" />
+        <attr name="bbv_drawable" format="reference"/>
     </declare-styleable>
 
     <!-- Default StaffView style. -->
-    <attr name="staffViewStyle" format="reference" />
+    <attr name="staffViewStyle" format="reference"/>
 
     <declare-styleable name="StaffView">
-        <attr name="sv_staff" format="reference" />
-        <attr name="sv_normalLabelColor" format="color|reference" />
-        <attr name="sv_selectLabelColor" format="color|reference" />
-        <attr name="sv_labelMarginTop" format="dimension|reference" />
-        <attr name="sv_labelTextSize" format="dimension|reference" />
-        <attr name="sv_extraTextSize" format="dimension|reference" />
-        <attr name="sv_extraMarginTop" format="dimension|reference" />
-        <attr name="sv_extraMarginLeft" format="dimension|reference" />
-        <attr name="sv_showCursor" format="boolean|reference" />
-        <attr name="sv_cursorDrawable" format="reference" />
+        <attr name="sv_staff" format="reference"/>
+        <attr name="sv_normalLabelColor" format="color|reference"/>
+        <attr name="sv_selectLabelColor" format="color|reference"/>
+        <attr name="sv_labelMarginTop" format="dimension|reference"/>
+        <attr name="sv_labelTextSize" format="dimension|reference"/>
+        <attr name="sv_extraTextSize" format="dimension|reference"/>
+        <attr name="sv_extraMarginTop" format="dimension|reference"/>
+        <attr name="sv_extraMarginLeft" format="dimension|reference"/>
+        <attr name="sv_showCursor" format="boolean|reference"/>
+        <attr name="sv_cursorDrawable" format="reference"/>
     </declare-styleable>
 
     <!-- Default ProgressBarView style. -->
-    <attr name="progressBarViewStyle" format="reference" />
+    <attr name="progressBarViewStyle" format="reference"/>
 
     <declare-styleable name="ProgressBarView">
-        <attr name="pbv_progress" format="fraction" />
-        <attr name="pbv_progressWidth" format="dimension|reference" />
-        <attr name="pbv_progressColor" format="color|reference" />
-        <attr name="pbv_progressBackground" format="color|reference" />
-        <attr name="pbv_progressTextSize" format="dimension|reference" />
-        <attr name="pbv_progressTextColor" format="color|reference" />
-        <attr name="pbv_describeText" format="string|reference" />
-        <attr name="pbv_describeTextSize" format="dimension|reference" />
-        <attr name="pbv_describeTextColor" format="color|reference" />
-        <attr name="pbv_describeOffsetY" format="dimension|reference" />
-        <attr name="pbv_startAngle" format="float|reference" />
+        <attr name="pbv_progress" format="fraction"/>
+        <attr name="pbv_progressWidth" format="dimension|reference"/>
+        <attr name="pbv_progressColor" format="color|reference"/>
+        <attr name="pbv_progressBackground" format="color|reference"/>
+        <attr name="pbv_progressTextSize" format="dimension|reference"/>
+        <attr name="pbv_progressTextColor" format="color|reference"/>
+        <attr name="pbv_describeText" format="string|reference"/>
+        <attr name="pbv_describeTextSize" format="dimension|reference"/>
+        <attr name="pbv_describeTextColor" format="color|reference"/>
+        <attr name="pbv_describeOffsetY" format="dimension|reference"/>
+        <attr name="pbv_startAngle" format="float|reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="ArcProgressBarView">
+        <attr name="apbv_progressWidth" format="dimension|reference"/>
+        <attr name="apbv_progressColor" format="color|reference"/>
+        <attr name="apbv_progressBackground" format="color|reference"/>
+        <attr name="apbv_isRestartAnimation" format="boolean|reference"/>
+        <attr name="apbv_duration" format="integer|reference"/>
+        <attr name="apbv_max"/>
+        <attr name="apbv_min"/>
+        <attr name="android:progress"/>
     </declare-styleable>
 
     <!-- 倒计时 View -->
