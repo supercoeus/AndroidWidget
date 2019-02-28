@@ -3,10 +3,7 @@ package com.github.airsaid.androidwidget.widget;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.RectF;
+import android.graphics.*;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.v4.math.MathUtils;
@@ -16,7 +13,11 @@ import android.view.animation.DecelerateInterpolator;
 import com.github.airsaid.androidwidget.R;
 
 /**
- * 自定义弧形进度条。支持 {@link ArcProgressBarView#setMin(int)} 和 {@link ArcProgressBarView#setMax(int)} (int)} 方法。
+ * 自定义弧形进度条。
+ * <p>
+ * 1，支持最小最大值设置。 通过 {@link ArcProgressBarView#setMin(int)} 和 {@link ArcProgressBarView#setMax(int)} 方法设置。
+ * 2，支持渐变颜色设置。通过 {@link ArcProgressBarView#setProgressColor(int)} 和 {@link ArcProgressBarView#setProgressEndColor(int)} 方法设置。
+ * 3，支持角度设置。通过 {@link ArcProgressBarView#setStartAngle(float)} 和 {@link ArcProgressBarView#setSweepAngle(float)} 方法设置。
  * <p>
  * TOTO：
  * <p>
@@ -57,6 +58,8 @@ public class ArcProgressBarView extends View {
     private float mProgressWidth;
     /** 进度条的颜色 */
     private int   mProgressColor;
+    /** 进度条结束颜色 */
+    private int   mProgressEndColor;
     /** 进度条背景的颜色 */
     private int   mBackgroundColor;
 
@@ -66,6 +69,11 @@ public class ArcProgressBarView extends View {
     private int mMin;
     /** 进度条最大进度 */
     private int mMax;
+
+    /** 开始角度 */
+    private float mStartAngle;
+    /** 持续角度（从开始角度开始，持续多少度） */
+    private float mSweepAngle;
 
     /** 进度条动画持续时间（单位毫秒） */
     private long    mDuration;
@@ -92,8 +100,11 @@ public class ArcProgressBarView extends View {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ArcProgressBarView);
         setProgressWidth(a.getDimension(R.styleable.ArcProgressBarView_apbv_progressWidth, 20));
         setProgressColor(a.getColor(R.styleable.ArcProgressBarView_apbv_progressColor, Color.BLUE));
+        setProgressEndColor(a.getColor(R.styleable.ArcProgressBarView_apbv_progressEndColor, mProgressColor));
         setBackgroundColor(a.getColor(R.styleable.ArcProgressBarView_apbv_progressBackground, Color.GRAY));
         setRestartAnimation(a.getBoolean(R.styleable.ArcProgressBarView_apbv_isRestartAnimation, false));
+        setStartAngle(a.getFloat(R.styleable.ArcProgressBarView_apbv_startAngle, 165f));
+        setSweepAngle(a.getFloat(R.styleable.ArcProgressBarView_apbv_sweepAngle, 210f));
         setDuration(a.getInt(R.styleable.ArcProgressBarView_apbv_duration, 300));
         setProgress(a.getInt(R.styleable.ArcProgressBarView_android_progress, 0));
         setMin(a.getInt(R.styleable.ArcProgressBarView_apbv_min, 0));
@@ -193,6 +204,14 @@ public class ArcProgressBarView extends View {
         mProgressColor = progressColor;
     }
 
+    public int getProgressEndColor() {
+        return mProgressEndColor;
+    }
+
+    public void setProgressEndColor(int progressEndColor) {
+        mProgressEndColor = progressEndColor;
+    }
+
     public synchronized int getBackgroundColor() {
         return mBackgroundColor;
     }
@@ -227,6 +246,22 @@ public class ArcProgressBarView extends View {
             mProgress = mMax;
             refreshProgress(mProgress, false);
         }
+    }
+
+    public float getStartAngle() {
+        return mStartAngle;
+    }
+
+    public void setStartAngle(float startAngle) {
+        mStartAngle = startAngle;
+    }
+
+    public float getSweepAngle() {
+        return mSweepAngle;
+    }
+
+    public void setSweepAngle(float sweepAngle) {
+        mSweepAngle = sweepAngle;
     }
 
     public synchronized long getDuration() {
@@ -265,16 +300,25 @@ public class ArcProgressBarView extends View {
     }
 
     void drawBackground(Canvas canvas) {
+        mPaint.setShader(null);
         mPaint.setColor(mBackgroundColor);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(mProgressWidth);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
-        canvas.drawArc(getProgressRectF(), 165, 210, false, mPaint);
+        canvas.drawArc(getProgressRectF(), mStartAngle, mSweepAngle, false, mPaint);
     }
 
     void drawProgress(Canvas canvas) {
-        mPaint.setColor(mProgressColor);
-        canvas.drawArc(getProgressRectF(), 165, 210f * mVisualProgress, false, mPaint);
+        int[] colors = {mProgressColor, mProgressEndColor};
+        int halfWidth = canvas.getWidth() / 2;
+        int halfHeight = canvas.getHeight() / 2;
+        SweepGradient shader = new SweepGradient(halfWidth, halfHeight,
+                colors, new float[]{0f, mSweepAngle / 360f});// 修改为具体的渐变度数，否则是从 0 到 360 度
+        Matrix matrix = new Matrix(); // 使用矩阵对 shader 进行旋转，否则角度默认从 0 度开始
+        matrix.setRotate(mStartAngle - mProgressWidth / 2, halfWidth, halfHeight);
+        shader.setLocalMatrix(matrix);
+        mPaint.setShader(shader);
+        canvas.drawArc(getProgressRectF(), mStartAngle, mSweepAngle * mVisualProgress, false, mPaint);
     }
 
 }
