@@ -5,23 +5,24 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blackBackground">
+        android:background="@color/background">
 
     <com.github.airsaid.androidwidget.widget.ArcProgressBarView
             android:id="@+id/progressBar"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="260dp"
+            android:layout_height="260dp"
+            android:layout_marginTop="100dp"
             app:apbv_progressBackground="@android:color/darker_gray"
             app:apbv_duration="@android:integer/config_longAnimTime"
             app:apbv_progressColor="@color/colorAccent"
             app:apbv_progressEndColor="@color/colorPrimary"
-            app:apbv_isRestartAnimation="true"
-            app:apbv_progressWidth="20dp"
-            app:apbv_startAngle="155"
-            app:apbv_sweepAngle="230"
-            app:apbv_min="1000"
-            app:apbv_max="6000"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:apbv_isRestartAnimation="false"
+            app:apbv_progressWidth="8dp"
+            app:apbv_startAngle="-90"
+            app:apbv_sweepAngle="360"
+            app:apbv_min="0"
+            app:apbv_max="100"
+            app:apbv_thumbDrawable="@mipmap/ic_thumb_progress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -30,7 +31,7 @@
             android:id="@+id/value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/textWhite"
+            android:textColor="@color/textBlack"
             android:textStyle="bold"
             android:textSize="60sp"
             app:layout_constraintStart_toStartOf="@id/progressBar"
@@ -38,5 +39,19 @@
             app:layout_constraintTop_toTopOf="@id/progressBar"
             app:layout_constraintBottom_toBottomOf="@id/progressBar"
             tools:text="50"/>
+
+    <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/seek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:min="0"
+            android:max="100"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progressBar"
+            tools:targetApi="o"/>
 
 </android.support.constraint.ConstraintLayout>

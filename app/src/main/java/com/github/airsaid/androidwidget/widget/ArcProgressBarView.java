@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.*;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.v4.math.MathUtils;
@@ -80,6 +81,9 @@ public class ArcProgressBarView extends View {
     /** 进度条动画每次是否需要重头开始 */
     private boolean mIsRestartAnimation;
 
+    /** 进度条头部样式 */
+    private Drawable mThumbDrawable;
+
     /** 视觉用的 progress 值，范围在 [0...1] */
     private float mVisualProgress;
 
@@ -103,6 +107,7 @@ public class ArcProgressBarView extends View {
         setProgressEndColor(a.getColor(R.styleable.ArcProgressBarView_apbv_progressEndColor, mProgressColor));
         setBackgroundColor(a.getColor(R.styleable.ArcProgressBarView_apbv_progressBackground, Color.GRAY));
         setRestartAnimation(a.getBoolean(R.styleable.ArcProgressBarView_apbv_isRestartAnimation, false));
+        setThumbDrawable(a.getDrawable(R.styleable.ArcProgressBarView_apbv_thumbDrawable));
         setStartAngle(a.getFloat(R.styleable.ArcProgressBarView_apbv_startAngle, 165f));
         setSweepAngle(a.getFloat(R.styleable.ArcProgressBarView_apbv_sweepAngle, 210f));
         setDuration(a.getInt(R.styleable.ArcProgressBarView_apbv_duration, 300));
@@ -172,14 +177,7 @@ public class ArcProgressBarView extends View {
 
     public synchronized void setProgressWidth(float progressWidth) {
         mProgressWidth = progressWidth;
-        // 更新 Progress 区域
-        int width = getMeasuredWidth();
-        if (width > 0) {
-            float half = mProgressWidth / 2f;
-            float right = getMeasuredWidth() - half;
-            float bottom = getMeasuredHeight() - half;
-            setProgressRectF(half, half, right, bottom);
-        }
+        updateProgressRect();
     }
 
     synchronized void setProgressRectF(float left, float top, float right, float bottom) {
@@ -188,7 +186,9 @@ public class ArcProgressBarView extends View {
 
     synchronized RectF getProgressRectF() {
         if (mProgressRectF == null) {
-            float half = mProgressWidth / 2f;
+            float max = Math.max(mProgressWidth, mThumbDrawable == null ? 0 :
+                    Math.max(mThumbDrawable.getIntrinsicWidth(), mThumbDrawable.getIntrinsicHeight()));
+            float half = max / 2f;
             float right = getMeasuredWidth() - half;
             float bottom = getMeasuredHeight() - half;
             setProgressRectF(half, half, right, bottom);
@@ -222,6 +222,20 @@ public class ArcProgressBarView extends View {
 
     public synchronized int getProgress() {
         return mProgress;
+    }
+
+    public Drawable getThumbDrawable() {
+        return mThumbDrawable;
+    }
+
+    public void setThumbDrawable(Drawable thumbDrawable) {
+        mThumbDrawable = thumbDrawable;
+        if (mThumbDrawable != null) {
+            int intrinsicWidth = mThumbDrawable.getIntrinsicWidth();
+            int intrinsicHeight = mThumbDrawable.getIntrinsicHeight();
+            mThumbDrawable.setBounds(0, 0, intrinsicWidth, intrinsicHeight);
+            updateProgressRect();
+        }
     }
 
     public synchronized int getMin() {
@@ -292,11 +306,24 @@ public class ArcProgressBarView extends View {
         return mOnProgressBarChangeListener;
     }
 
+    private void updateProgressRect() {
+        int width = getMeasuredWidth();
+        if (width <= 0) return;
+
+        float max = Math.max(mProgressWidth, mThumbDrawable == null ? 0 :
+                Math.max(mThumbDrawable.getIntrinsicWidth(), mThumbDrawable.getIntrinsicHeight()));
+        float half = max / 2f;
+        float right = getMeasuredWidth() - half;
+        float bottom = getMeasuredHeight() - half;
+        setProgressRectF(half, half, right, bottom);
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         drawBackground(canvas);
         drawProgress(canvas);
+        drawThumbDrawable(canvas);
     }
 
     void drawBackground(Canvas canvas) {
@@ -315,10 +342,33 @@ public class ArcProgressBarView extends View {
         SweepGradient shader = new SweepGradient(halfWidth, halfHeight,
                 colors, new float[]{0f, mSweepAngle / 360f});// 修改为具体的渐变度数，否则是从 0 到 360 度
         Matrix matrix = new Matrix(); // 使用矩阵对 shader 进行旋转，否则角度默认从 0 度开始
-        matrix.setRotate(mStartAngle - mProgressWidth / 2, halfWidth, halfHeight);
+        matrix.setRotate(mStartAngle - mProgressWidth / 6f, halfWidth, halfHeight);
         shader.setLocalMatrix(matrix);
         mPaint.setShader(shader);
         canvas.drawArc(getProgressRectF(), mStartAngle, mSweepAngle * mVisualProgress, false, mPaint);
+    }
+
+    void drawThumbDrawable(Canvas canvas) {
+        if (mThumbDrawable == null) return;
+
+
+        float pw = Math.max(mProgressWidth,
+                Math.max(mThumbDrawable.getIntrinsicWidth(),
+                        mThumbDrawable.getIntrinsicHeight()));
+
+        int centerX = getWidth() / 2;
+        int centerY = getHeight() / 2;
+        float radius = centerX - pw / 2;
+        float angle = mSweepAngle * mVisualProgress;
+        int width = mThumbDrawable.getIntrinsicWidth();
+        int height = mThumbDrawable.getIntrinsicHeight();
+        float dx = (float) (centerX + radius * Math.sin(angle * Math.PI / 180f));
+        float dy = (float) (centerY - radius * Math.cos(angle * Math.PI / 180f));
+
+        canvas.save();
+        canvas.translate(dx - width / 2f, dy - height / 2f);
+        mThumbDrawable.draw(canvas);
+        canvas.restore();
     }
 
 }

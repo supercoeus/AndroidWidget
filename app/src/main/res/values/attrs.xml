@@ -134,6 +134,7 @@
         <attr name="apbv_progressColor" format="color|reference"/>
         <attr name="apbv_progressEndColor" format="color|reference"/>
         <attr name="apbv_progressBackground" format="color|reference"/>
+        <attr name="apbv_thumbDrawable" format="reference"/>
         <attr name="apbv_isRestartAnimation" format="boolean|reference"/>
         <attr name="apbv_startAngle" format="float|reference"/>
         <attr name="apbv_sweepAngle" format="float|reference"/>
