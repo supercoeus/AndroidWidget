@@ -9,4 +9,6 @@
 
     <string name="author">Airsaid</string>
     <string name="author_link">https://github.com/airsaid</string>
+
+    <string name="set_progress">setProgress</string>
 </resources>

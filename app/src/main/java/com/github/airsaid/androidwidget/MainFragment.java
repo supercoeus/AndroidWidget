@@ -73,6 +73,10 @@ public class MainFragment extends Fragment {
                 "倒计时 View",
                 CountdownViewFragment.class));
 
+        mViewItems.add(new Item(StepperProgressBar.class.getSimpleName(),
+            "步进进度条 View",
+            StepperProgressBarFragment.class));
+
         mHasViewItems.add(new Item(SuperTextView.class.getSimpleName(),
                 "增强版 TextView",
                 SuperTextViewFragment.class));

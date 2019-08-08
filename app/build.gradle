@@ -24,13 +24,6 @@ android {
         }
     }
 
-    /*android.applicationVariants.all { variant ->
-        variant.getPackageApplication().outputDirectory = new File(project.rootDir.absolutePath)
-        variant.outputs.all {
-            outputFileName = "sample.apk"
-        }
-    }*/
-
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8

@@ -154,4 +154,26 @@
         <attr name="cv_textSize" format="dimension|reference"/>
         <attr name="cv_time" format="integer"/>
     </declare-styleable>
+
+    <!-- 自定义步进进度条属性 -->
+    <declare-styleable name="StepperProgressBar">
+        <!-- 进度条进度，必须在最小和最大进度之间的范围 -->
+        <attr name="spb_progress" format="integer|reference"/>
+        <!-- 最小进度值 -->
+        <attr name="spb_min" format="integer|reference"/>
+        <!-- 最大进度值 -->
+        <attr name="spb_max" format="integer|reference"/>
+        <!-- 动画时长 -->
+        <attr name="spb_duration" format="integer|reference"/>
+        <!-- 默认背景颜色 -->
+        <attr name="spb_normalColor" format="color|reference"/>
+        <!-- 进度条颜色 -->
+        <attr name="spb_progressColor" format="color|reference"/>
+        <!-- 进度条高度 -->
+        <attr name="spb_progressHeight" format="dimension|reference"/>
+        <!-- 开始位置图片 -->
+        <attr name="spb_startImage" format="reference"/>
+        <!-- 结束位置图片 -->
+        <attr name="spb_endImage" format="reference"/>
+    </declare-styleable>
 </resources>
