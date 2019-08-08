@@ -351,7 +351,6 @@ public class ArcProgressBarView extends View {
     void drawThumbDrawable(Canvas canvas) {
         if (mThumbDrawable == null) return;
 
-
         float pw = Math.max(mProgressWidth,
                 Math.max(mThumbDrawable.getIntrinsicWidth(),
                         mThumbDrawable.getIntrinsicHeight()));

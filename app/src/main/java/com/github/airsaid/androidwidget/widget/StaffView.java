@@ -430,7 +430,9 @@ public class StaffView extends View implements Animator.AnimatorListener {
      */
     public void stop() {
         resetCursor();
-        mValueAnimator.cancel();
+        if (mValueAnimator != null) {
+            mValueAnimator.cancel();
+        }
         if (mPauseCursor) mPauseCursor = false;
         if (mAnimatorListener != null) {
             mAnimatorListener.onStop();
