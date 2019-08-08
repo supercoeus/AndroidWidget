@@ -1,11 +1,9 @@
 package com.github.airsaid.androidwidget.widget;
 
-import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.style.ImageSpan;
 
 

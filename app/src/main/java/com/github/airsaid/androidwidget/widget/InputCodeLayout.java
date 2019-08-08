@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.support.annotation.IntDef;
+import androidx.annotation.IntDef;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextUtils;

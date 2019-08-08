@@ -65,14 +65,14 @@
                 android:layout_marginTop="10dp"
                 android:text="gravity："/>
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cbx_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_gravity"
                 android:text="left"/>
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cbx_top"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                 android:layout_toRightOf="@id/cbx_left"
                 android:text="top"/>
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cbx_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -88,7 +88,7 @@
                 android:layout_toRightOf="@id/cbx_top"
                 android:text="right"/>
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cbx_bottom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -96,14 +96,14 @@
                 android:layout_toRightOf="@id/cbx_right"
                 android:text="bottom"/>
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cbx_center_v"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cbx_left"
                 android:text="center_vertical"/>
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cbx_center_h"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
                 android:layout_toRightOf="@id/cbx_center_v"
                 android:text="center_horizontal"/>
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cbx_center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -127,14 +127,14 @@
                 android:layout_marginLeft="10dp"
                 android:text="layout_gravity："/>
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cbx_left2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_layout_gravity"
                 android:text="left"/>
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cbx_top2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
                 android:layout_toRightOf="@id/cbx_left2"
                 android:text="top"/>
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cbx_right2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -150,7 +150,7 @@
                 android:layout_toRightOf="@id/cbx_top2"
                 android:text="right"/>
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cbx_bottom2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -158,14 +158,14 @@
                 android:layout_toRightOf="@id/cbx_right2"
                 android:text="bottom"/>
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cbx_center_v2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cbx_left2"
                 android:text="center_vertical"/>
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cbx_center_h2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -173,7 +173,7 @@
                 android:layout_toRightOf="@id/cbx_center_v2"
                 android:text="center_horizontal"/>
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cbx_center2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

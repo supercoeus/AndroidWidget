@@ -1,10 +1,9 @@
 package com.github.airsaid.androidwidget.ui;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.AppCompatSeekBar;
-import android.support.v7.widget.SwitchCompat;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatSeekBar;
+import androidx.appcompat.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

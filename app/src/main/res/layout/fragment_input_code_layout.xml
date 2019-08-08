@@ -31,7 +31,7 @@
         android:layout_marginTop="20dp"
         android:text="修改输入框数量(4)"/>
 
-    <android.support.v7.widget.AppCompatSeekBar
+    <androidx.appcompat.widget.AppCompatSeekBar
         android:id="@+id/sbr_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
         android:layout_marginTop="20dp"
         android:text="修改输入框间距(10)"/>
 
-    <android.support.v7.widget.AppCompatSeekBar
+    <androidx.appcompat.widget.AppCompatSeekBar
         android:id="@+id/sbr_divide_width"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
         android:layout_marginTop="20dp"
         android:text="修改输入框大小(40)"/>
 
-    <android.support.v7.widget.AppCompatSeekBar
+    <androidx.appcompat.widget.AppCompatSeekBar
         android:id="@+id/sbr_size"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
