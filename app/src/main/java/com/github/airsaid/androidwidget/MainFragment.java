@@ -81,6 +81,10 @@ public class MainFragment extends Fragment {
                 "增强版 TextView",
                 SuperTextViewFragment.class));
 
+        mHasViewItems.add(new Item(DragImageButton.class.getSimpleName(),
+            "可拖拽 ImageButton",
+            DragImageButtonFragment.class));
+
         mLayoutItems.add(new Item(SimpleLinearLayout.class.getSimpleName(),
                 "简易版 LinearLayout",
                 SimpleLinearLayoutFragment.class));
