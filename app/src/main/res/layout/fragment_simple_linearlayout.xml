@@ -1,223 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context="com.github.airsaid.androidwidget.MainActivity">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:clickable="true"
+        android:background="@color/background"
+        tools:context="com.github.airsaid.androidwidget.MainActivity">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/txt_title1"
-            style="@style/TextAppearance.AppCompat.Medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:text="SimpleLinearLayout："/>
+                android:id="@+id/txt_title1"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="SimpleLinearLayout："/>
 
         <com.github.airsaid.androidwidget.widget.SimpleLinearLayout
-            android:id="@+id/simpleLinearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_below="@id/txt_title1"
-            android:layout_marginTop="10dp"
-            android:background="@color/colorPrimary">
+                android:id="@+id/simpleLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_below="@id/txt_title1"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimary">
 
         </com.github.airsaid.androidwidget.widget.SimpleLinearLayout>
 
         <TextView
-            android:id="@+id/txt_title2"
-            style="@style/TextAppearance.AppCompat.Medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/simpleLinearLayout"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:text="LinearLayout："/>
+                android:id="@+id/txt_title2"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/simpleLinearLayout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="LinearLayout："/>
 
         <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_below="@+id/txt_title2"
-            android:layout_marginTop="10dp"
-            android:background="@color/colorAccent">
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_below="@+id/txt_title2"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorAccent">
 
         </LinearLayout>
 
         <RelativeLayout
-            android:id="@+id/relativeLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/linearLayout">
+                android:id="@+id/relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linearLayout">
 
             <TextView
-                android:id="@+id/txt_gravity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:text="gravity："/>
+                    android:id="@+id/txt_gravity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="gravity："/>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/cbx_left"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txt_gravity"
-                android:text="left"/>
+                    android:id="@+id/cbx_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_gravity"
+                    android:text="left"/>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/cbx_top"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/cbx_left"
-                android:layout_toRightOf="@id/cbx_left"
-                android:text="top"/>
+                    android:id="@+id/cbx_top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/cbx_left"
+                    android:layout_toRightOf="@id/cbx_left"
+                    android:text="top"/>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/cbx_right"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/cbx_left"
-                android:layout_toRightOf="@id/cbx_top"
-                android:text="right"/>
+                    android:id="@+id/cbx_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/cbx_left"
+                    android:layout_toRightOf="@id/cbx_top"
+                    android:text="right"/>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/cbx_bottom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/cbx_left"
-                android:layout_toRightOf="@id/cbx_right"
-                android:text="bottom"/>
+                    android:id="@+id/cbx_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/cbx_left"
+                    android:layout_toRightOf="@id/cbx_right"
+                    android:text="bottom"/>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/cbx_center_v"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cbx_left"
-                android:text="center_vertical"/>
+                    android:id="@+id/cbx_center_v"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cbx_left"
+                    android:text="center_vertical"/>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/cbx_center_h"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/cbx_center_v"
-                android:layout_toRightOf="@id/cbx_center_v"
-                android:text="center_horizontal"/>
+                    android:id="@+id/cbx_center_h"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/cbx_center_v"
+                    android:layout_toRightOf="@id/cbx_center_v"
+                    android:text="center_horizontal"/>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/cbx_center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/cbx_center_v"
-                android:layout_toRightOf="@id/cbx_center_h"
-                android:text="center"/>
+                    android:id="@+id/cbx_center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/cbx_center_v"
+                    android:layout_toRightOf="@id/cbx_center_h"
+                    android:text="center"/>
 
             <TextView
-                android:id="@+id/txt_layout_gravity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cbx_center_v"
-                android:layout_marginLeft="10dp"
-                android:text="layout_gravity："/>
+                    android:id="@+id/txt_layout_gravity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cbx_center_v"
+                    android:layout_marginLeft="10dp"
+                    android:text="layout_gravity："/>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/cbx_left2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txt_layout_gravity"
-                android:text="left"/>
+                    android:id="@+id/cbx_left2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_layout_gravity"
+                    android:text="left"/>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/cbx_top2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/cbx_left2"
-                android:layout_toRightOf="@id/cbx_left2"
-                android:text="top"/>
+                    android:id="@+id/cbx_top2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/cbx_left2"
+                    android:layout_toRightOf="@id/cbx_left2"
+                    android:text="top"/>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/cbx_right2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/cbx_left2"
-                android:layout_toRightOf="@id/cbx_top2"
-                android:text="right"/>
+                    android:id="@+id/cbx_right2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/cbx_left2"
+                    android:layout_toRightOf="@id/cbx_top2"
+                    android:text="right"/>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/cbx_bottom2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/cbx_left2"
-                android:layout_toRightOf="@id/cbx_right2"
-                android:text="bottom"/>
+                    android:id="@+id/cbx_bottom2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/cbx_left2"
+                    android:layout_toRightOf="@id/cbx_right2"
+                    android:text="bottom"/>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/cbx_center_v2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cbx_left2"
-                android:text="center_vertical"/>
+                    android:id="@+id/cbx_center_v2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cbx_left2"
+                    android:text="center_vertical"/>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/cbx_center_h2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/cbx_center_v2"
-                android:layout_toRightOf="@id/cbx_center_v2"
-                android:text="center_horizontal"/>
+                    android:id="@+id/cbx_center_h2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/cbx_center_v2"
+                    android:layout_toRightOf="@id/cbx_center_v2"
+                    android:text="center_horizontal"/>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/cbx_center2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/cbx_center_v2"
-                android:layout_toRightOf="@id/cbx_center_h2"
-                android:text="center"/>
+                    android:id="@+id/cbx_center2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/cbx_center_v2"
+                    android:layout_toRightOf="@id/cbx_center_h2"
+                    android:text="center"/>
 
             <Button
-                android:id="@+id/btn_add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cbx_center_v2"
-                android:text="add"/>
+                    android:id="@+id/btn_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cbx_center_v2"
+                    android:text="add"/>
 
             <Button
-                android:id="@+id/btn_delete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/btn_add"
-                android:layout_toRightOf="@id/btn_add"
-                android:text="delete"/>
+                    android:id="@+id/btn_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/btn_add"
+                    android:layout_toRightOf="@id/btn_add"
+                    android:text="delete"/>
 
             <RadioGroup
-                android:id="@+id/rg_orientation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/btn_add"
-                android:layout_alignTop="@id/btn_add"
-                android:layout_toRightOf="@id/btn_delete"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/rb_vertical"
+                    android:id="@+id/rg_orientation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="vertical"/>
+                    android:layout_alignBottom="@id/btn_add"
+                    android:layout_alignTop="@id/btn_add"
+                    android:layout_toRightOf="@id/btn_delete"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/rb_horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="horizontal"/>
+                        android:id="@+id/rb_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="vertical"/>
+
+                <RadioButton
+                        android:id="@+id/rb_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="horizontal"/>
             </RadioGroup>
         </RelativeLayout>
     </RelativeLayout>
