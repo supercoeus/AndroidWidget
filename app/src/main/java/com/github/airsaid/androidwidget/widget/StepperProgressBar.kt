@@ -3,7 +3,10 @@ package com.github.airsaid.androidwidget.widget
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.*
+import android.os.Parcel
+import android.os.Parcelable
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import androidx.annotation.ColorInt
@@ -18,7 +21,7 @@ import com.github.airsaid.androidwidget.R
  * @author airsaid
  */
 class StepperProgressBar @JvmOverloads constructor
-  (context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : View(context, attrs, defStyleAttr) {
+(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : View(context, attrs, defStyleAttr) {
 
   private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
   private var progressAnimator: ObjectAnimator? = null
@@ -270,6 +273,52 @@ class StepperProgressBar @JvmOverloads constructor
   private fun getDistance(progress: Int) = width * getScaleForProgress(progress)
 
   private fun getProgressWidth() = (width - getStepperRadius() * 2f)
+
+  override fun onSaveInstanceState(): Parcelable {
+    // 在父类 View 状态的基础上保存当前 View 状态
+    val savedState = SavedState(super.onSaveInstanceState())
+    savedState.progress = this.progress
+    return savedState
+  }
+
+  override fun onRestoreInstanceState(state: Parcelable?) {
+    if (state is SavedState) {
+      // 先恢复父类 View 的状态
+      super.onRestoreInstanceState(state.superState)
+      // 恢复当前 View 的状态
+      setProgress(state.progress)
+    } else {
+      super.onRestoreInstanceState(state)
+    }
+  }
+
+  internal class SavedState : BaseSavedState {
+    var progress = 0
+
+    constructor(source: Parcel) : super(source) {
+      progress = source.readInt()
+    }
+
+    constructor(superState: Parcelable?) : super(superState)
+
+    override fun writeToParcel(out: Parcel, flags: Int) {
+      super.writeToParcel(out, flags)
+      out.writeInt(progress)
+    }
+
+    companion object {
+      @JvmField
+      val CRAETOR = object : Parcelable.Creator<SavedState> {
+        override fun createFromParcel(source: Parcel): SavedState {
+          return SavedState(source)
+        }
+
+        override fun newArray(size: Int): Array<SavedState?> {
+          return arrayOfNulls(size)
+        }
+      }
+    }
+  }
 
   companion object {
     private val TAG = StepperProgressBar::class.java.simpleName
